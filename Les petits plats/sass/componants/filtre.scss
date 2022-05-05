@@ -1,0 +1,29 @@
+.filtres {
+  width: 90%;
+}
+
+.filtre {
+  width: 170px;
+  height: 70px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filtre input {
+  width: 130px;
+  background-color: transparent;
+  border: none;
+}
+.ingredient {
+  background-color: $ingredientColor;
+}
+
+.appareil {
+  background-color: $appareilColor;
+}
+
+.ustensile {
+  background-color: $ustensileColor;
+}

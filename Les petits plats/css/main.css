@@ -24,6 +24,37 @@
   height: 70px;
 }
 
+.filtres {
+  width: 90%;
+}
+
+.filtre {
+  width: 170px;
+  height: 70px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filtre input {
+  width: 130px;
+  background-color: transparent;
+  border: none;
+}
+
+.ingredient {
+  background-color: #3282f7;
+}
+
+.appareil {
+  background-color: #68d9a4;
+}
+
+.ustensile {
+  background-color: #ed6454;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
