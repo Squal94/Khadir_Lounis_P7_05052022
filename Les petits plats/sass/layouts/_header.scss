@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  &__logo {
+    height: 50px;
+    width: 50px;
+  }
+  &__title {
+    color: $primaryColorSite;
+    font-weight: 700;
+  }
+}

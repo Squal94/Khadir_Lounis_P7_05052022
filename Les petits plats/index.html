@@ -8,17 +8,59 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
     <title>Les petits plats</title>
   </head>
 
   <body>
-    <header>
-      <h1>Les petits plats</h1>
-      <p>test github</p>
+    <!-- Header logo -->
+
+    <header class="header w-100 my-5">
+      <img
+        class="header__logo mx-auto"
+        src="/assets/image/logo.png"
+        alt="Logo, les petits plats"
+      />
+      <h1 class="header__title mx-auto">Les petits plats</h1>
     </header>
 
-    <main id="main"></main>
+    <!-- Section bar de recherche -->
+
+    <section class="search mx-auto">
+      <div class="position-relative w-100 d-flex flex-nowrap">
+        <input
+          class="bg-light border-0 form-control rounded-3"
+          id="searchInput"
+          type="text"
+          placeholder="Rechercher une recette"
+        />
+        <button
+          class="align-self-center bg-light border-0 position-absolute"
+          style="right: 0"
+        >
+          <img
+            class="bg-light"
+            width="32"
+            height="32"
+            src="/assets/image/search.png"
+            alt="bouton, rechercher"
+          />
+        </button>
+      </div>
+    </section>
+
+    <!-- Section filtre de recherche -->
+
+    <section class="filtre"></section>
+
+    <!-- Section galerie des cartes -->
+
+    <main id="cardMain"></main>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
