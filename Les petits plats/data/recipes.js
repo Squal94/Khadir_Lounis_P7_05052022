@@ -1775,3 +1775,7 @@ const recipes = [
     ustensils: ["rouleau à patisserie", "fouet"],
   },
 ];
+
+//------------ exportation de l'objet recipes -------------
+
+export { recipes };

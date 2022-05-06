@@ -1,3 +1,12 @@
+//------------- importation des recettes de recipes ----------------
+import { recipes } from "../../data/recipes.js";
+let recettes = [];
+function tableauRecette() {
+  for (let i = 0; i < recipes.length; i++) {
+    recettes.push(recipes[i]);
+  }
+}
+console.log(recettes);
 // -----------   filtre   ------------
 function filtre() {
   const ingredient = document.querySelector(".ingredient");
@@ -12,6 +21,7 @@ function filtre() {
 }
 
 function init() {
+  tableauRecette();
   filtre();
 }
 init();
