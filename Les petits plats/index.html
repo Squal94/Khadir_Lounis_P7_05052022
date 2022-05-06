@@ -59,9 +59,20 @@
     <!-- Section filtre de recherche -->
 
     <section class="filtres d-flex flex-row mx-auto gap-4">
-      <div class="filtre ingredient mt-4"></div>
-      <div class="filtre appareil mt-4"></div>
-      <div class="filtre ustensile mt-4"></div>
+      <div class="filtres__container d-flex flex-row position-relative">
+        <div class="filtre ingredient mt-4">
+          <div class="position-absolute" style="right: 0">
+            <img src="/assets/image/keyboarddown.png" alt="bouton, ouverture" />
+            <img src="/assets/image/keyboardup.png" alt="bouton, fermeture" />
+          </div>
+        </div>
+      </div>
+      <div class="filtres__container d-flex flex-row position-relative">
+        <div class="filtre appareil mt-4"></div>
+      </div>
+      <div class="filtres__container d-flex flex-row position-relative">
+        <div class="filtre ustensile mt-4"></div>
+      </div>
     </section>
 
     <!-- Section galerie des cartes -->
