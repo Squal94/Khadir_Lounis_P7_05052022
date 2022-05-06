@@ -11,11 +11,20 @@
   align-items: center;
 }
 
+.arrow {
+  filter: invert(100%);
+}
+
 .filtre input {
   width: 130px;
   background-color: transparent;
   border: none;
+  color: white;
 }
+input:focus {
+  border: none;
+}
+
 .ingredient {
   background-color: $ingredientColor;
 }
