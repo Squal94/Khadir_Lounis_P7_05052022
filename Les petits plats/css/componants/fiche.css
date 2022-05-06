@@ -9,9 +9,31 @@
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 }
+.fiche__title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
 .fiche__title--name {
   font-size: 1em;
   margin: 15px;
+}
+.fiche__title__time {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+.fiche__title__time--pic {
+  width: 22px;
+  padding: 2px;
+}
+.fiche__title__time--string {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 15px;
 }
 
 /*# sourceMappingURL=fiche.css.map */

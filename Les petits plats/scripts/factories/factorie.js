@@ -34,10 +34,21 @@ function ficheRecette(data) {
   const title = document.createElement("h2");
   title.classList.add("fiche__title--name");
   title.innerText = `${data.name}`;
+  const time = document.createElement("div");
+  time.classList.add("fiche__title__time");
+  const timePic = document.createElement("img");
+  timePic.classList.add("fiche__title__time--pic");
+  timePic.setAttribute("src", "/assets/image/lhorloge.png");
+  const timeString = document.createElement("p");
+  timeString.classList.add("fiche__title__time--string");
+  timeString.innerText = `${data.time}min`;
   cardMain.appendChild(fiche);
   fiche.appendChild(img);
   fiche.appendChild(titleContainer);
   titleContainer.appendChild(title);
+  titleContainer.appendChild(time);
+  time.appendChild(timePic);
+  time.appendChild(timeString);
 }
 
 ficheRecette(recettes[0]);

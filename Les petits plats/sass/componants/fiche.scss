@@ -9,9 +9,29 @@
     border-top-left-radius: 5px;
   }
   &__title {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
     &--name {
       font-size: 1em;
       margin: 15px;
+    }
+    &__time {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: center;
+      margin: 15px;
+      &--pic {
+        width: 22px;
+        padding: 2px;
+      }
+      &--string {
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 15px;
+      }
     }
   }
 }
