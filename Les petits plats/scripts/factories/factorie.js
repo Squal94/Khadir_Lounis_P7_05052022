@@ -6,7 +6,7 @@ function tableauRecette() {
     recettes.push(recipes[i]);
   }
 }
-console.log(recettes);
+tableauRecette();
 // -----------   filtre   ------------
 function filtre() {
   const ingredient = document.querySelector(".ingredient");
@@ -20,8 +20,29 @@ function filtre() {
   ustensile.appendChild(ustensileInput);
 }
 
+//-------------- factorie fiche recette ----------------
+
+function ficheRecette(data) {
+  const cardMain = document.getElementById("cardMain");
+  const fiche = document.createElement("div");
+  fiche.classList.add("fiche");
+  const img = document.createElement("img");
+  img.classList.add("fiche__vignette");
+  img.setAttribute("src", "/assets/recette/recette-limonada-de-coco.jpg");
+  const titleContainer = document.createElement("div");
+  titleContainer.classList.add("fiche__title");
+  const title = document.createElement("h2");
+  title.classList.add("fiche__title--name");
+  title.innerText = `${data.name}`;
+  cardMain.appendChild(fiche);
+  fiche.appendChild(img);
+  fiche.appendChild(titleContainer);
+  titleContainer.appendChild(title);
+}
+
+ficheRecette(recettes[0]);
+
 function init() {
-  tableauRecette();
   filtre();
 }
 init();

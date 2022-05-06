@@ -1,0 +1,17 @@
+.fiche {
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  &__vignette {
+    width: 380px;
+    height: 178px;
+    object-fit: cover;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  &__title {
+    &--name {
+      font-size: 1em;
+      margin: 15px;
+    }
+  }
+}

@@ -7,7 +7,8 @@
   height: 70px;
   border-radius: 5px;
   display: flex;
-  justify-content: center;
+  flex-flow: row;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -22,7 +23,7 @@
   color: white;
 }
 input:focus {
-  border: none;
+  outline: none;
 }
 
 .ingredient {
