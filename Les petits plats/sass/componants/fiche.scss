@@ -1,6 +1,9 @@
 .fiche {
   background-color: #e7e7e7;
   border-radius: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 364px;
   &__vignette {
     width: 380px;
     height: 178px;
@@ -22,7 +25,7 @@
       flex-flow: row nowrap;
       align-items: center;
       justify-content: center;
-      margin: 15px;
+      margin: 0 15px;
       &--pic {
         width: 22px;
         padding: 2px;
@@ -32,6 +35,20 @@
         font-weight: 700;
         margin-top: 15px;
       }
+    }
+  }
+  &__recette {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    &--texte {
+      width: 171px;
+      font-size: 0.8em;
+    }
+    &--ingredient {
+      width: 171px;
+      font-size: 0.8em;
     }
   }
 }

@@ -68,6 +68,9 @@ input:focus {
 .fiche {
   background-color: #e7e7e7;
   border-radius: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 364px;
 }
 .fiche__vignette {
   width: 380px;
@@ -91,7 +94,7 @@ input:focus {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
-  margin: 15px;
+  margin: 0 15px;
 }
 .fiche__title__time--pic {
   width: 22px;
@@ -101,6 +104,19 @@ input:focus {
   font-size: 18px;
   font-weight: 700;
   margin-top: 15px;
+}
+.fiche__recette {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.fiche__recette--texte {
+  width: 171px;
+  font-size: 0.8em;
+}
+.fiche__recette--ingredient {
+  width: 171px;
+  font-size: 0.8em;
 }
 
 /*!
