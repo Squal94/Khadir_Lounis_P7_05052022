@@ -38,31 +38,44 @@
   align-items: center;
 }
 
-.arrow {
+.item {
+  max-width: 500px;
+}
+
+#btnFiltre {
+  width: 20px;
+  right: 5px;
+  background-color: transparent;
   filter: invert(100%);
 }
 
 .filtre input {
   width: 130px;
+  font-size: 1.2rem;
   background-color: transparent;
   border: none;
   color: white;
+}
+
+input::placeholder {
+  color: white;
+  font-size: 1.2rem;
 }
 
 input:focus {
   outline: none;
 }
 
-.ingredient {
-  background-color: #3282f7;
+.ustensileColor {
+  background-color: #ed6454;
 }
 
-.appareil {
+.appareilColor {
   background-color: #68d9a4;
 }
 
-.ustensile {
-  background-color: #ed6454;
+.ingredientColor {
+  background-color: #3282f7;
 }
 
 .fiche {
