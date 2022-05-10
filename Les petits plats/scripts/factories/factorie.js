@@ -28,6 +28,7 @@ function ficheRecette(data) {
 
   const fiche = document.createElement("div");
   fiche.classList.add("fiche");
+  fiche.classList.add(`fiche${data.id}`);
 
   const img = document.createElement("img");
   img.classList.add("fiche__vignette");
@@ -62,7 +63,6 @@ function ficheRecette(data) {
     const listeLi = document.createElement("li");
     recetteIngredientListe.appendChild(listeLi);
     let innerli = data.ingredients[i];
-    console.log(innerli);
     listeLi.innerText = `${innerli.ingredient}`;
   }
 
@@ -83,9 +83,14 @@ function ficheRecette(data) {
   recetteContainer.appendChild(recetteTexte);
 }
 
-ficheRecette(recettes[0]);
+function mosaicRecette() {
+  recettes.forEach((recette) => {
+    ficheRecette(recette);
+  });
+}
 
 function init() {
   filtre();
+  mosaicRecette();
 }
 init();

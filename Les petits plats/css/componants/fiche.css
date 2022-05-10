@@ -1,3 +1,7 @@
+#cardMain {
+  width: 90%;
+}
+
 .fiche {
   background-color: #e7e7e7;
   border-radius: 5px;
@@ -19,6 +23,9 @@
   align-items: center;
 }
 .fiche__title--name {
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 200px;
   font-size: 1em;
   margin: 15px;
 }
@@ -45,6 +52,10 @@
 }
 .fiche__recette--texte {
   width: 171px;
+  height: 110px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 0.8em;
 }
 .fiche__recette--ingredient {
