@@ -2,6 +2,10 @@
   width: 90%;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .fiche {
   background-color: #e7e7e7;
   border-radius: 5px;
@@ -23,6 +27,7 @@
     &--name {
       overflow: hidden;
       white-space: nowrap;
+      text-overflow: ellipsis;
       max-width: 200px;
       font-size: 1em;
       margin: 15px;
@@ -53,7 +58,7 @@
       width: 171px;
       height: 110px;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: wrap;
       text-overflow: ellipsis;
       font-size: 0.8em;
     }
