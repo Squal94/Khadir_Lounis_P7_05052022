@@ -1,8 +1,10 @@
 #cardMain {
   width: 90%;
+  margin-bottom: 40px;
 }
 
 ul {
+  margin-left: -15px;
   list-style-type: none;
 }
 
@@ -57,6 +59,7 @@ ul {
     &--texte {
       width: 171px;
       height: 110px;
+      margin: 5px;
       overflow: hidden;
       white-space: wrap;
       text-overflow: ellipsis;
@@ -64,7 +67,11 @@ ul {
     }
     &--ingredient {
       width: 171px;
+      height: 110px;
       font-size: 0.8em;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 }

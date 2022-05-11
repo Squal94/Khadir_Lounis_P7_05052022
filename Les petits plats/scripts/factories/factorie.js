@@ -83,11 +83,16 @@ function ficheRecette(data) {
   recetteContainer.appendChild(recetteTexte);
 }
 
+//-------- fonction affichage de toute les recettes
 function mosaicRecette() {
   recettes.forEach((recette) => {
     ficheRecette(recette);
   });
 }
+
+//-------------fonction d'affichage des éléments cliquables des filtres------------------
+
+//
 
 function init() {
   filtre();
