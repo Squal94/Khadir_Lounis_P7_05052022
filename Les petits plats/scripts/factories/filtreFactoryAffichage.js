@@ -52,33 +52,20 @@ function affichageFiltre() {
   const domFilterIngredient = document.querySelector(".ingredientContent");
   const domFilterAppareil = document.querySelector(".appareilContent");
   const domFilterUstensile = document.querySelector(".ustensileContent");
-  arrayIngredients.forEach((valueIngredient) => {
-    let ingredientFilterValue = document.createElement("a");
-    ingredientFilterValue.classList.add("link");
-    ingredientFilterValue.classList.add(
-      `link--${valueIngredient.split(" ").join("-")}`
-    );
-    ingredientFilterValue.innerText = valueIngredient;
-    domFilterIngredient.appendChild(ingredientFilterValue);
-  });
-  arrayAppareils.forEach((valueAppareil) => {
-    let appareilFilterValue = document.createElement("a");
-    appareilFilterValue.classList.add("link");
-    appareilFilterValue.classList.add(
-      `link--${valueAppareil.split(" ").join("-")}`
-    );
-    appareilFilterValue.innerText = valueAppareil;
-    domFilterAppareil.appendChild(appareilFilterValue);
-  });
-  arrayUstensils.forEach((valueUstensil) => {
-    let ustensilFilterValue = document.createElement("a");
-    ustensilFilterValue.classList.add("link");
-    ustensilFilterValue.classList.add(
-      `link--${valueUstensil.split(" ").join("-")}`
-    );
-    ustensilFilterValue.innerText = valueUstensil;
-    domFilterUstensile.appendChild(ustensilFilterValue);
-  });
+  function miseEnPage(target, array) {
+    array.forEach((value) => {
+      let filterValueTraitement = document.createElement("a");
+      filterValueTraitement.classList.add("link");
+      filterValueTraitement.classList.add(
+        `link--${value.split(" ").join("-")}`
+      );
+      filterValueTraitement.innerText = value;
+      target.appendChild(filterValueTraitement);
+    });
+  }
+  miseEnPage(domFilterIngredient, arrayIngredients);
+  miseEnPage(domFilterAppareil, arrayAppareils);
+  miseEnPage(domFilterUstensile, arrayUstensils);
 }
 
 affichageFiltre();
