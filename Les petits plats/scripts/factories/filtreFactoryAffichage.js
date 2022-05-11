@@ -3,7 +3,7 @@ let recettes = [...recipes];
 
 // -----------------  création du tableau ingrédient sans doublon et en minuscule ------------------------------
 let keyIngredients = [];
-let arrayIngredient = [];
+let arrayIngredients = [];
 
 function ingredientArray() {
   recettes.forEach((recette) => {
@@ -14,9 +14,6 @@ function ingredientArray() {
     });
   });
 }
-
-ingredientArray();
-arrayIngredient = [...new Set(keyIngredients)];
 
 // -----------------  création du tableau appareil sans doublon et en minuscule ------------------------------
 let keyAppareils = [];
@@ -45,8 +42,43 @@ function ustensilsArray() {
 ingredientArray();
 appareilArray();
 ustensilsArray();
-arrayIngredient = [...new Set(keyIngredients)];
+arrayIngredients = [...new Set(keyIngredients)];
 arrayAppareils = [...new Set(keyAppareils)];
 arrayUstensils = [...new Set(keyUstensils)];
 
-console.log(arrayUstensils);
+//------------- function d'affichage des liens dans les filtres--------------------
+
+function affichageFiltre() {
+  const domFilterIngredient = document.querySelector(".ingredientContent");
+  const domFilterAppareil = document.querySelector(".appareilContent");
+  const domFilterUstensile = document.querySelector(".ustensileContent");
+  arrayIngredients.forEach((valueIngredient) => {
+    let ingredientFilterValue = document.createElement("a");
+    ingredientFilterValue.classList.add("link");
+    ingredientFilterValue.classList.add(
+      `link--${valueIngredient.split(" ").join("-")}`
+    );
+    ingredientFilterValue.innerText = valueIngredient;
+    domFilterIngredient.appendChild(ingredientFilterValue);
+  });
+  arrayAppareils.forEach((valueAppareil) => {
+    let appareilFilterValue = document.createElement("a");
+    appareilFilterValue.classList.add("link");
+    appareilFilterValue.classList.add(
+      `link--${valueAppareil.split(" ").join("-")}`
+    );
+    appareilFilterValue.innerText = valueAppareil;
+    domFilterAppareil.appendChild(appareilFilterValue);
+  });
+  arrayUstensils.forEach((valueUstensil) => {
+    let ustensilFilterValue = document.createElement("a");
+    ustensilFilterValue.classList.add("link");
+    ustensilFilterValue.classList.add(
+      `link--${valueUstensil.split(" ").join("-")}`
+    );
+    ustensilFilterValue.innerText = valueUstensil;
+    domFilterUstensile.appendChild(ustensilFilterValue);
+  });
+}
+
+affichageFiltre();

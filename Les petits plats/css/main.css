@@ -24,6 +24,17 @@
   height: 70px;
 }
 
+.link {
+  margin: 3px;
+  color: white;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #00d0ff;
+  cursor: pointer;
+}
+
 .filtres {
   width: 90%;
   height: 200px;
