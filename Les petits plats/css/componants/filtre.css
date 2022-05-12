@@ -1,9 +1,9 @@
 /* Error: Undefined variable.
  *    ,
- * 55 |   background-color: $ustensileColor;
+ * 61 |   background-color: $ustensileColor;
  *    |                     ^^^^^^^^^^^^^^^
  *    '
- *   sass\componants\filtre.scss 55:21  root stylesheet */
+ *   sass\componants\filtre.scss 61:21  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a    \2577 \a 55 \2502    background-color: $ustensileColor;\d\a    \2502                      ^^^^^^^^^^^^^^^\a    \2575 \a   sass\\componants\\filtre.scss 55:21  root stylesheet";
+  content: "Error: Undefined variable.\a    \2577 \a 61 \2502    background-color: $ustensileColor;\d\a    \2502                      ^^^^^^^^^^^^^^^\a    \2575 \a   sass\\componants\\filtre.scss 61:21  root stylesheet";
 }

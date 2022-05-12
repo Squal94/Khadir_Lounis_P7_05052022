@@ -1,7 +1,13 @@
 .link {
   margin: 3px;
+  width: 25%;
+  height: 20px;
+  white-space: nowrap;
   color: white;
   text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .link:hover {
