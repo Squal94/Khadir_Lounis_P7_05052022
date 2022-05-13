@@ -1,4 +1,27 @@
 @charset "UTF-8";
+.tag {
+  width: 90%;
+}
+
+.alert {
+  width: 107px;
+  height: 37px;
+  background-color: #3282f7;
+  border: none;
+  color: white;
+}
+
+.alert p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.btn-close {
+  margin-top: 10px;
+  color: white;
+  background: white;
+}
+
 .header {
   display: flex;
   flex-flow: column nowrap;
@@ -25,14 +48,14 @@
 }
 
 .link {
-  margin: 3px;
-  width: 25%;
-  height: 20px;
-  white-space: nowrap;
   color: white;
-  text-decoration: none;
-  text-align: center;
+  margin: 3px;
+  height: 20px;
+  width: 25%;
+  white-space: nowrap;
   overflow: hidden;
+  text-decoration: none;
+  text-align: left;
   text-overflow: ellipsis;
 }
 
@@ -4978,7 +5001,7 @@ textarea.form-control-lg {
 
 .alert {
   position: relative;
-  padding: 1rem 1rem;
+  padding: 0 1rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -5000,7 +5023,7 @@ textarea.form-control-lg {
   top: 0;
   right: 0;
   z-index: 2;
-  padding: 1.25rem 1rem;
+  padding: 0 1rem;
 }
 
 .alert-primary {

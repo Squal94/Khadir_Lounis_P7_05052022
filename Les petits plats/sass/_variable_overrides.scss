@@ -7,3 +7,28 @@ $appareilColor: #68d9a4;
 $ustensileColor: #ed6454;
 
 $card-cap-bg: none !default;
+
+$alert-padding-y: 0;
+
+.tag {
+  width: 90%;
+}
+
+.alert {
+  width: 107px;
+  height: 37px;
+  background-color: $ingredientColor;
+  border: none;
+  color: white;
+}
+
+.alert p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.btn-close {
+  margin-top: 10px;
+  color: white;
+  background: white;
+}

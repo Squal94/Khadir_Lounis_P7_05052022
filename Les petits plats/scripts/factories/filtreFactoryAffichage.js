@@ -69,3 +69,5 @@ function affichageFiltre() {
 }
 
 affichageFiltre();
+
+export { arrayIngredients, arrayAppareils, arrayUstensils };
