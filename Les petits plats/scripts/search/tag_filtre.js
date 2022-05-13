@@ -12,9 +12,6 @@ const tagContainer = document.querySelector(".tag");
 let ingredientColor = "ingredientColor";
 let ustensileColor = "ustensileColor";
 let appareilColor = "appareilColor";
-// const test = document.querySelectorAll(".link");
-// const test2 = document.querySelector(".link");
-// const testArray = [...test];
 
 function filterTag(target, color) {
   target.addEventListener(
@@ -43,36 +40,3 @@ function filterTag(target, color) {
 filterTag(containerIngredient, ingredientColor);
 filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
-
-// containerUstensil.addEventListener(
-//   "click",
-//   function (e) {
-//     let target = e.target;
-//     let text = target.textContent;
-//     console.log(text);
-//   },
-//   false
-// );
-
-// containerTest.addEventListener("click", (e) => {
-//   e.preventDefault;
-//   console.log(containerTest.querySelector(":focus"));
-// });
-
-// containerTest.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   let index = testArray.findIndex(
-//     (f) => f == containerTest.querySelector(":focus")
-//   );
-//   console.log(index);
-// });
-
-// function findTag(e) {
-//   e.preventDefault();
-//   let index = testArray.findIndex(
-//     (f) => f === containerTest.querySelector(":focus")
-//   );
-//   console.log(index);
-// }
-
-// findTag();
