@@ -19,7 +19,6 @@ function filterTag(target, color) {
     function (e) {
       let cible = e.target;
       let text = cible.textContent;
-      console.log(text);
       const tagDiv = document.createElement("div");
       const tagAffichage = `<div class="alert ${color} alert-dismissible fade show my-4" role="alert">
           <p>${text}</p>
