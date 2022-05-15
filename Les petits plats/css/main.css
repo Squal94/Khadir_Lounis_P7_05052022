@@ -59,6 +59,10 @@
   text-overflow: ellipsis;
 }
 
+.item {
+  border-radius: 5px;
+}
+
 .link:hover {
   color: #00d0ff;
   cursor: pointer;
@@ -177,23 +181,20 @@ ul {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  height: 107px;
 }
 .fiche__recette--texte {
   width: 171px;
-  height: 110px;
   margin: 5px;
+  -webkit-line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  white-space: wrap;
-  text-overflow: ellipsis;
   font-size: 0.8em;
 }
 .fiche__recette--ingredient {
   width: 171px;
-  height: 110px;
   font-size: 0.8em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 /*!

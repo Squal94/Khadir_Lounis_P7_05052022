@@ -27,7 +27,7 @@ function ficheRecette(data) {
   console.log(data);
   const cardMain = document.getElementById("cardMain");
 
-  const fiche = document.createElement("div");
+  const fiche = document.createElement("article");
   fiche.classList.add("fiche");
   fiche.setAttribute("aria-labelledby", data.name);
   fiche.setAttribute("alt", `Fiche de la recette ${data.name}`);
