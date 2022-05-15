@@ -24,15 +24,17 @@ function filtre() {
 //-------------- factorie fiche recette ----------------
 
 function ficheRecette(data) {
+  console.log(data);
   const cardMain = document.getElementById("cardMain");
 
   const fiche = document.createElement("div");
   fiche.classList.add("fiche");
-  fiche.classList.add(`fiche${data.id}`);
+  fiche.setAttribute("aria-labelledby", data.name);
+  fiche.setAttribute("alt", `Fiche de la recette ${data.name}`);
 
   const img = document.createElement("img");
   img.classList.add("fiche__vignette");
-  img.setAttribute("src", "/assets/recette/recette-limonada-de-coco.jpg");
+  img.setAttribute("src", `/assets/recette/${data.image}`);
 
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("fiche__title");

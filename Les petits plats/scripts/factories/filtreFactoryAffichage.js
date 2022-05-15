@@ -70,4 +70,4 @@ function affichageFiltre() {
 
 affichageFiltre();
 
-export { arrayIngredients, arrayAppareils, arrayUstensils };
+export { arrayIngredients, arrayAppareils, arrayUstensils, recettes };

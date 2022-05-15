@@ -3,6 +3,7 @@ const recipes = [
     id: 1,
     name: "Limonade de Coco",
     servings: 1,
+    image: "recette-limonada-de-coco.jpg",
     ingredients: [
       {
         ingredient: "Lait de coco",
@@ -37,6 +38,7 @@ const recipes = [
     id: 2,
     name: "Poisson Cru à la tahitienne",
     servings: 2,
+    image: "poisson-cru-a-la-tahitienne.jpg",
     ingredients: [
       {
         ingredient: "Thon Rouge (ou blanc)",
@@ -75,6 +77,7 @@ const recipes = [
     id: 3,
     name: "Poulet coco réunionnais",
     servings: 4,
+    image: "poulet-coco-reunionnais.jpg",
     ingredients: [
       {
         ingredient: "Poulet",
@@ -114,6 +117,7 @@ const recipes = [
     id: 4,
     name: "Salade de riz",
     servings: 4,
+    image: "salade-de-riz.jpg",
     ingredients: [
       {
         ingredient: "Riz blanc",
@@ -154,6 +158,7 @@ const recipes = [
     id: 5,
     name: "Tarte au thon",
     servings: 4,
+    image: "tarte-au-thon-rapide.jpeg",
     ingredients: [
       {
         ingredient: "Pâte feuilletée",
@@ -194,6 +199,7 @@ const recipes = [
     id: 6,
     name: "Tarte aux pommes",
     servings: 6,
+    image: "tarte-au-pomme.jpg",
     ingredients: [
       {
         ingredient: "Pâte brisée",
@@ -233,6 +239,7 @@ const recipes = [
     id: 7,
     name: "Tartelettes au chocolat et aux fraises",
     servings: 6,
+    image: "tarte-fraise-chocolat.jpg",
     ingredients: [
       {
         ingredient: "Pâte sablée",
@@ -268,6 +275,7 @@ const recipes = [
     id: 8,
     name: "Brownie",
     servings: 10,
+    image: "brownie-au-chocolat-noir.jpeg",
     ingredients: [
       {
         ingredient: "Noix",
@@ -309,6 +317,7 @@ const recipes = [
     id: 9,
     name: "Salade Méditerannéene fraiche au chèvre",
     servings: 4,
+    image: "salade-au-fromage-de-chevre-fondant-1.jpeg",
     ingredients: [
       {
         ingredient: "Concombre",
@@ -342,6 +351,7 @@ const recipes = [
     id: 10,
     name: "Tartiflette",
     servings: 4,
+    image: "tartiflette.jpg",
     ingredients: [
       {
         ingredient: "Roblochon",
@@ -378,6 +388,7 @@ const recipes = [
     id: 11,
     name: "Salade tomate, mozzarella et pommes",
     servings: 4,
+    image: "tomate-mozza.jpg",
     ingredients: [
       {
         ingredient: "Tomates cerises",
@@ -418,6 +429,7 @@ const recipes = [
     id: 12,
     name: "Compote pomme rhubarbe",
     servings: 4,
+    image: "compote-de-rhubarbe.jpeg",
     ingredients: [
       {
         ingredient: "Rhubarbe",
@@ -449,6 +461,7 @@ const recipes = [
     id: 13,
     name: "Salade mâchée de patates",
     servings: 2,
+    image: "salade-machée.jpg",
     ingredients: [
       {
         ingredient: "Mâche",
@@ -485,6 +498,7 @@ const recipes = [
     id: 14,
     name: "Galette Bretonne Saucisse et Fromage à raclette",
     servings: 2,
+    image: "galette-bretonne-garnie-de-saucisse.jpeg",
     ingredients: [
       {
         ingredient: "Saucisse bretonne ou de toulouse",
@@ -524,6 +538,7 @@ const recipes = [
     id: 15,
     name: "Crêpes Chocolat Banane",
     servings: 10,
+    image: "crepes-chocolat-banane-carre.jpg",
     ingredients: [
       {
         ingredient: "Oeuf",
@@ -564,6 +579,7 @@ const recipes = [
     id: 16,
     name: "Gratin de pâtes à la tomate",
     servings: 2,
+    image: "gratin-de-pates-sauce-italienne-au-tomate-sechees.jpeg",
     ingredients: [
       {
         ingredient: "Tomate",
@@ -601,6 +617,7 @@ const recipes = [
     id: 17,
     name: "Smoothie à la fraise",
     servings: 6,
+    image: "smoothie-fraises.jpg",
     ingredients: [
       {
         ingredient: "Fraise",
@@ -634,6 +651,7 @@ const recipes = [
     id: 18,
     name: "Smoothie ananas et vanille",
     servings: 5,
+    image: "smoothie-ananas.jpeg",
     ingredients: [
       {
         ingredient: "Ananas",
@@ -660,6 +678,7 @@ const recipes = [
     id: 19,
     name: "Shake Banane Kiwi",
     servings: 4,
+    image: "shake-banane-kiwi.jpg",
     ingredients: [
       {
         ingredient: "Kiwi",
@@ -694,6 +713,7 @@ const recipes = [
     id: 20,
     name: "Pates Carbonara",
     servings: 5,
+    image: "pates-carbonara.jpg",
     ingredients: [
       {
         ingredient: "Tagliatelles",
@@ -731,6 +751,7 @@ const recipes = [
     id: 21,
     name: "Spaghettis à la bolognaise",
     servings: 4,
+    image: "spagetti-à-la-bolognaise.jpg",
     ingredients: [
       {
         ingredient: "Spaghettis",
@@ -772,6 +793,7 @@ const recipes = [
     id: 22,
     name: "Fondant au chocolat",
     servings: 4,
+    image: "fondant-au-chocolat.jpg",
     ingredients: [
       {
         ingredient: "Beurre",
@@ -808,6 +830,7 @@ const recipes = [
     id: 23,
     name: "Quiche lorraine",
     servings: 4,
+    image: "quiche-lorraine.jpg",
     ingredients: [
       {
         ingredient: "Pâte brisée",
@@ -849,6 +872,7 @@ const recipes = [
     id: 24,
     name: "Salade de pâtes",
     servings: 4,
+    image: "salade-de-pates-aux-tomates-cerises-et-olives-noires.jpg",
     ingredients: [
       {
         ingredient: "Thon en miettes",
@@ -889,6 +913,7 @@ const recipes = [
     id: 25,
     name: "Cookies",
     servings: 4,
+    image: "cookies.jpg",
     ingredients: [
       {
         ingredient: "Sucre",
@@ -925,6 +950,7 @@ const recipes = [
     id: 26,
     name: "Soupe de tomates",
     servings: 2,
+    image: "soupe-de-tomates.jpeg",
     ingredients: [
       {
         ingredient: "Tomate",
@@ -957,6 +983,7 @@ const recipes = [
     id: 27,
     name: "Soupe à l'oseille",
     servings: 4,
+    image: "soupe-a-loseille.jpg",
     ingredients: [
       {
         ingredient: "Oseille",
@@ -992,6 +1019,7 @@ const recipes = [
     id: 28,
     name: "Soupe de poireaux",
     servings: 4,
+    image: "soupe-poireaux.jpeg",
     ingredients: [
       {
         ingredient: "Poireau",
@@ -1028,6 +1056,7 @@ const recipes = [
     id: 29,
     name: "Houmous Express",
     servings: 2,
+    image: "houmous-express.jpg",
     ingredients: [
       {
         ingredient: "Pois chiches",
@@ -1060,6 +1089,7 @@ const recipes = [
     id: 30,
     name: "Purée de pois cassés",
     servings: 4,
+    image: "puree-de-pois-casses.jpeg",
     ingredients: [
       {
         ingredient: "Pois Cassé",
@@ -1086,6 +1116,7 @@ const recipes = [
     id: 31,
     name: "Jardinière de légumes",
     servings: 4,
+    image: "jardinniere-legumes.jpg",
     ingredients: [
       {
         ingredient: "Carotte",
@@ -1121,6 +1152,7 @@ const recipes = [
     id: 32,
     name: "Croque Monsieur à la dinde",
     servings: 4,
+    image: "croque-monsieur-dinde.jpg",
     ingredients: [
       {
         ingredient: "Pain de mie",
@@ -1163,6 +1195,7 @@ const recipes = [
     id: 33,
     name: "Sandwich au saumon fumé",
     servings: 4,
+    image: "sandwish-saumon-fume.jpg",
     ingredients: [
       {
         ingredient: "Pain de mie",
@@ -1199,6 +1232,7 @@ const recipes = [
     id: 34,
     name: "Purée de patate douce",
     servings: 4,
+    image: "puree-patate-douce.jpg",
     ingredients: [
       {
         ingredient: "Patate douce",
@@ -1228,6 +1262,7 @@ const recipes = [
     id: 35,
     name: "Purée de carottes",
     servings: 2,
+    image: "puree-carotte.jpg",
     ingredients: [
       {
         ingredient: "Carotte",
@@ -1268,6 +1303,7 @@ const recipes = [
     id: 36,
     name: "Lasagne Courgettes et Chèvre",
     servings: 2,
+    image: "lasagne-courgette.jpg",
     ingredients: [
       {
         ingredient: "Courgette",
@@ -1308,6 +1344,7 @@ const recipes = [
     id: 37,
     name: "Courgettes farcies au boeuf",
     servings: 2,
+    image: "courgette-farcie-boeuf.jpg",
     ingredients: [
       {
         ingredient: "Courgette",
@@ -1348,6 +1385,7 @@ const recipes = [
     id: 38,
     name: "Pain Perdu",
     servings: 4,
+    image: "pain-perdu.jpg",
     ingredients: [
       {
         ingredient: "Pain",
@@ -1379,6 +1417,7 @@ const recipes = [
     id: 39,
     name: "Crumble aux pommes",
     servings: 40,
+    image: "crumble-pommes.jpg",
     ingredients: [
       {
         ingredient: "Pomme",
@@ -1410,6 +1449,7 @@ const recipes = [
     id: 40,
     name: "Limonade",
     servings: 4,
+    image: "limonade.jpeg",
     ingredients: [
       {
         ingredient: "Eau",
@@ -1441,6 +1481,7 @@ const recipes = [
     id: 41,
     name: "Mousse au chocolat",
     servings: 4,
+    image: "mousse-chocolat.jpg",
     ingredients: [
       {
         ingredient: "Oeuf",
@@ -1467,6 +1508,7 @@ const recipes = [
     id: 42,
     name: "Charlotte au poires",
     servings: 3,
+    image: "charlotte-aux-poires.jpg",
     ingredients: [
       {
         ingredient: "Chocolat",
@@ -1497,6 +1539,7 @@ const recipes = [
     id: 43,
     name: "Tarte au citron",
     servings: 6,
+    image: "tarte-au-citron.jpeg",
     ingredients: [
       {
         ingredient: "Pâte brisée",
@@ -1531,6 +1574,7 @@ const recipes = [
     id: 44,
     name: "Crème déssert au chocolat",
     servings: 6,
+    image: "creme-dessert-chocolat.jpg",
     ingredients: [
       {
         ingredient: "Lait",
@@ -1568,6 +1612,7 @@ const recipes = [
     id: 45,
     name: "Crème patissière",
     servings: 8,
+    image: "creme-patissiere-640.jpg",
     ingredients: [
       {
         ingredient: "Lait",
@@ -1599,6 +1644,7 @@ const recipes = [
     id: 46,
     name: "Far breton",
     servings: 6,
+    image: "far-breton.jpg",
     ingredients: [
       {
         ingredient: "Farine",
@@ -1640,6 +1686,7 @@ const recipes = [
     id: 47,
     name: "Mousse au citron",
     servings: 6,
+    image: "mousse-citron.jpg",
     ingredients: [
       {
         ingredient: "Jus de citron",
@@ -1672,6 +1719,7 @@ const recipes = [
     id: 48,
     name: "Pizza",
     servings: 4,
+    image: "pizza-lardon.jpg",
     ingredients: [
       {
         ingredient: "Pâte à pizza",
@@ -1708,6 +1756,7 @@ const recipes = [
     id: 49,
     name: "Smoothie tropical",
     servings: 4,
+    image: "smoothie-tropical.jpg",
     ingredients: [
       {
         ingredient: "Bananes",
@@ -1742,6 +1791,7 @@ const recipes = [
     id: 50,
     name: "Frangipane",
     servings: 2,
+    image: "creme_frangipane.jpg",
     ingredients: [
       {
         ingredient: "Pâte feuilletée",
