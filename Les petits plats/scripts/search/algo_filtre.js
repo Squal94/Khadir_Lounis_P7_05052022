@@ -4,5 +4,3 @@ import {
   arrayUstensils,
   recettes,
 } from "../factories/filtreFactoryAffichage.js";
-
-console.log(recettes);

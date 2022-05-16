@@ -56,9 +56,7 @@ function affichageFiltre() {
     array.forEach((value) => {
       let filterValueTraitement = document.createElement("a");
       filterValueTraitement.classList.add("link");
-      filterValueTraitement.classList.add(
-        `link--${value.split(" ").join("-")}`
-      );
+      filterValueTraitement.setAttribute("aria-labelledby", value);
       filterValueTraitement.innerText = value;
       target.appendChild(filterValueTraitement);
     });
