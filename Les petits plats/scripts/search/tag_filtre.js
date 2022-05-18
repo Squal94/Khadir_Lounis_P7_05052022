@@ -34,7 +34,7 @@ function filterTag(target, color) {
       tagContainer.appendChild(tagDiv);
       tagDiv.innerHTML = tagAffichage;
       arrayTag.push(text);
-      console.log(arrayTag);
+      //console.log(arrayTag);
     },
     false
   );
@@ -48,6 +48,7 @@ function ifTagClose() {
       let ciblelabelledby = cible.getAttribute("aria-labelledby");
       let index = arrayTag.indexOf(ciblelabelledby);
       arrayTag.splice(index, 1);
+      //console.log(arrayTag);
     }
   });
 }
@@ -57,3 +58,5 @@ filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
 
 ifTagClose();
+
+export { arrayTag };
