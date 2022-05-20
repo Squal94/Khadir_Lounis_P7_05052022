@@ -9,12 +9,15 @@ function filtre() {
   const ustensile = document.querySelector(".ustensile");
   const ingredientInput = document.createElement("input");
   ingredientInput.classList.add("ingredientColor");
+  ingredientInput.classList.add("ingredientInput");
   ingredientInput.setAttribute("placeholder", "Ingredients");
   const appareilInput = document.createElement("input");
   appareilInput.classList.add("appareilColor");
+  appareilInput.classList.add("appareilInput");
   appareilInput.setAttribute("placeholder", "Appareils");
   const ustensileInput = document.createElement("input");
   ustensileInput.classList.add("ustensileColor");
+  ustensileInput.classList.add("ustensileInput");
   ustensileInput.setAttribute("placeholder", "Ustensiles");
   ingredient.appendChild(ingredientInput);
   appareil.appendChild(appareilInput);

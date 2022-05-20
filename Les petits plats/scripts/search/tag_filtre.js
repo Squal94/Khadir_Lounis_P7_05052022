@@ -9,6 +9,9 @@ const containerIngredient = document.querySelector(".ingredientContent");
 const containerAppareil = document.querySelector(".appareilContent");
 const containerUstensil = document.querySelector(".ustensileContent");
 const containerSuggestion = document.querySelector(".container__suggestion");
+const appareilInput = document.querySelector(".appareilInput");
+const ingredientInput = document.querySelector(".ingredientInput");
+const ustensilInput = document.querySelector(".ustensileInput");
 const changeTag = document.querySelector(".filtres__container");
 const tagContainer = document.querySelector(".tag");
 
@@ -129,6 +132,24 @@ function inputFindObject() {
   //containerSuggestion.innerHTML = `${InputSuggestion}`;
 }
 
+function inputFindLink() {
+  ingredientInput.addEventListener("keyup", () => {
+    const ingredientAllLink = containerIngredient.querySelectorAll(".link");
+    const expendBtn = document.querySelector(".ingredientBtn");
+    expendBtn.click();
+    expendBtn.remove.click();
+    for (let i = 0; i < ingredientAllLink.length; i++) {
+      let inputValue = ingredientInput.value;
+      const resultComparing = ingredientAllLink[i].textContent.toLowerCase();
+      if (resultComparing.includes(inputValue.toLowerCase())) {
+        ingredientAllLink[i].style.display = "block";
+      } else {
+        ingredientAllLink[i].style.display = "none";
+      }
+    }
+  });
+}
+
 function inputFindObjectClick() {
   containerSuggestion.addEventListener("mouseup", (e) => {
     arrayTag = [];
@@ -144,3 +165,4 @@ findObjectAffichage(changeTag);
 ifTagClose();
 inputFindObject();
 inputFindObjectClick();
+inputFindLink();
