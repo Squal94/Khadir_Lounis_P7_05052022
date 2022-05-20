@@ -42,7 +42,7 @@ function filterTag(target, color) {
   );
 }
 
-function findObject(source) {
+function findObjectAffichage(source) {
   console.log("coucou25");
 
   let checker = (arr, target) => target.every((v) => arr.includes(v));
@@ -95,15 +95,15 @@ function ifTagClose() {
       let ciblelabelledby = cible.getAttribute("aria-labelledby");
       let index = arrayTag.indexOf(ciblelabelledby);
       arrayTag.splice(index, 1);
-      findObject(tagContainer);
-      // console.log(arrayTag);
-      // console.log("coucou");
+      findObjectAffichage(tagContainer);
     }
   });
 }
 
+function InputFindObject(input, message) {}
+
 filterTag(containerIngredient, ingredientColor);
 filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
-findObject(changeTag);
+findObjectAffichage(changeTag);
 ifTagClose();

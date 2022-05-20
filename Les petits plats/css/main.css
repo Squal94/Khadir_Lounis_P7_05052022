@@ -47,6 +47,12 @@
   height: 70px;
 }
 
+.message {
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: #ff0033;
+}
+
 .link {
   color: white;
   margin: 3px;
