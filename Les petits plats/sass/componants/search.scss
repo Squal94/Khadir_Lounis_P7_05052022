@@ -15,3 +15,12 @@
   font-size: 1.7rem;
   color: rgb(255, 0, 51);
 }
+
+.suggestion {
+  margin-bottom: 0;
+  padding: 0.5rem;
+}
+
+.suggestion:hover {
+  background-color: rgba(132, 132, 184, 0.577);
+}

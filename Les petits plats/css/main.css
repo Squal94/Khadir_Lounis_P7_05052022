@@ -53,6 +53,15 @@
   color: #ff0033;
 }
 
+.suggestion {
+  margin-bottom: 0;
+  padding: 0.5rem;
+}
+
+.suggestion:hover {
+  background-color: rgba(132, 132, 184, 0.577);
+}
+
 .link {
   color: white;
   margin: 3px;
