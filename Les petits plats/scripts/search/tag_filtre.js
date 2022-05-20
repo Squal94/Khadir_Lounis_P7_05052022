@@ -107,6 +107,7 @@ function ifTagClose() {
 
 function inputFindObject() {
   const searchInputPrincipal = document.getElementById("search__Input");
+  const ficheArray = document.querySelectorAll(".fiche");
   searchInputPrincipal.addEventListener("keyup", () => {
     let InputSuggestion = "";
     for (let i = 0; i < recettes.length; i++) {
@@ -117,6 +118,8 @@ function inputFindObject() {
           InputSuggestion += `<p class="suggestion">${resultComparing}</p> `;
           document.querySelector(".container__suggestion").innerHTML =
             InputSuggestion;
+        } else if (inputValue === "" || inputValue.length < 3) {
+          ficheArray[i].style.display = "flex";
         }
       }
       // else {
@@ -136,8 +139,7 @@ function inputFindLink() {
   ingredientInput.addEventListener("keyup", () => {
     const ingredientAllLink = containerIngredient.querySelectorAll(".link");
     const expendBtn = document.querySelector(".ingredientBtn");
-    expendBtn.click();
-    expendBtn.remove.click();
+    //expendBtn.click();
     for (let i = 0; i < ingredientAllLink.length; i++) {
       let inputValue = ingredientInput.value;
       const resultComparing = ingredientAllLink[i].textContent.toLowerCase();
