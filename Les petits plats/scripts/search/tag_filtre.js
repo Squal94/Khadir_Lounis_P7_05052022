@@ -96,13 +96,15 @@ function ifTagClose() {
       if (arrayTag.length === 1) {
         console.log("je marche");
         arrayTag = [];
+        findObjectAffichage(tagContainer);
       } else {
         let ciblelabelledby = cible.getAttribute("aria-labelledby");
         let stringValue = arrayTag.join(",").replace(`,${ciblelabelledby}`, "");
         arrayTag = stringValue.split(",");
+        console.log(arrayTag);
+        findObjectAffichage(tagContainer);
       }
     }
-    findObjectAffichage(tagContainer);
   });
 }
 
@@ -121,7 +123,9 @@ function inputFindObject() {
             InputSuggestion;
         } else if (inputValue === "" || inputValue.length < 2) {
           ficheArray[i].style.display = "flex";
+          arrayTag = [];
           document.querySelector(".container__suggestion").innerHTML = "";
+        } else {
         }
       }
     }
@@ -131,8 +135,6 @@ function inputFindObject() {
 function inputFindLink() {
   const ingredientAllLink = containerIngredient.querySelectorAll(".link");
   ingredientInput.addEventListener("keyup", () => {
-    const expendBtn = document.querySelector(".ingredientBtn");
-    //expendBtn.click();
     for (let i = 0; i < ingredientAllLink.length; i++) {
       let inputValue = ingredientInput.value;
       const resultComparing = ingredientAllLink[i].textContent.toLowerCase();
