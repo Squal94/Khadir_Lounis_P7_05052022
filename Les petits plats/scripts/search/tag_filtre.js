@@ -14,6 +14,9 @@ const ingredientInput = document.querySelector(".ingredientInput");
 const ustensilInput = document.querySelector(".ustensileInput");
 const changeTag = document.querySelector(".filtres__container");
 const tagContainer = document.querySelector(".tag");
+const ingredientAllLink = containerIngredient.querySelectorAll(".link");
+const appareilAllLink = containerAppareil.querySelectorAll(".link");
+const ustensilAllLink = containerUstensil.querySelectorAll(".link");
 
 let arrayTag = [];
 let ingredientColor = "ingredientColor";
@@ -132,16 +135,15 @@ function inputFindObject() {
   });
 }
 
-function inputFindLink() {
-  const ingredientAllLink = containerIngredient.querySelectorAll(".link");
-  ingredientInput.addEventListener("keyup", () => {
-    for (let i = 0; i < ingredientAllLink.length; i++) {
-      let inputValue = ingredientInput.value;
-      const resultComparing = ingredientAllLink[i].textContent.toLowerCase();
+function inputFindLink(action, array) {
+  action.addEventListener("keyup", () => {
+    for (let i = 0; i < array.length; i++) {
+      let inputValue = action.value;
+      const resultComparing = array[i].textContent.toLowerCase();
       if (resultComparing.indexOf(`${inputValue}`) !== -1) {
-        ingredientAllLink[i].style.display = "block";
+        array[i].style.display = "block";
       } else {
-        ingredientAllLink[i].style.display = "none";
+        array[i].style.display = "none";
       }
     }
   });
@@ -174,8 +176,10 @@ filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
 findObjectAffichage(changeTag);
 ifTagClose();
+inputFindLink(ingredientInput, ingredientAllLink);
+inputFindLink(appareilInput, appareilAllLink);
+inputFindLink(ustensilInput, ustensilAllLink);
 inputFindObject();
-inputFindLink();
 inputFindObjectClick();
 
 // function ifTagClose() {
