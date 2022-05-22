@@ -64,8 +64,6 @@ function findObjectAffichage(source) {
       for (let i = 0; i < valueOfIngredients.length; i++) {
         valueToCompare.push(valueOfIngredients[i].ingredient.toLowerCase());
       }
-      console.log(checker(arrayTag, valueToCompare));
-
       if (checker(arrayTag, valueToCompare) === false) {
         arrayFicheDisplayNone.push(recettes[i].name);
       }
@@ -90,15 +88,21 @@ function findObjectAffichage(source) {
 }
 
 function ifTagClose() {
-  tagContainer.addEventListener("mousedown", (e) => {
+  tagContainer.addEventListener("click", (e) => {
     let cible = e.target;
     let cibleClose = cible.getAttribute("class");
     if (cibleClose == "btn-close") {
-      let ciblelabelledby = cible.getAttribute("aria-labelledby");
-      let index = arrayTag.indexOf(ciblelabelledby);
-      arrayTag.splice(index, 1);
-      findObjectAffichage(tagContainer);
+      console.log(arrayTag.length);
+      if (arrayTag.length === 1) {
+        console.log("je marche");
+        arrayTag = [];
+      } else {
+        let ciblelabelledby = cible.getAttribute("aria-labelledby");
+        let stringValue = arrayTag.join(",").replace(`,${ciblelabelledby}`, "");
+        arrayTag = stringValue.split(",");
+      }
     }
+    findObjectAffichage(tagContainer);
   });
 }
 
@@ -118,23 +122,10 @@ function inputFindObject() {
         } else if (inputValue === "" || inputValue.length < 2) {
           ficheArray[i].style.display = "flex";
           document.querySelector(".container__suggestion").innerHTML = "";
-          // const testLabel = ficheArray[i].getAttribute("aria-labelledby");
-          // arrayTag.push(testLabel);
         }
       }
-      // else {
-      //   if (inputValue === "" && inputValue.length < 1) {
-      //     const messageAlerte = document.querySelector(".message");
-      //     messageAlerte.innerHTML = "Ce site ne contient pas recette";
-      //   }
-      // }
     }
   });
-  //const test = document.querySelector(".search__Input");
-  // const containerSuggestion = document.createElement("div");
-  // containerSuggestion.classList.add("suggestion");
-  // test.appendChild(containerSuggestion);
-  //containerSuggestion.innerHTML = `${InputSuggestion}`;
 }
 
 function inputFindLink() {
@@ -184,3 +175,71 @@ ifTagClose();
 inputFindObject();
 inputFindLink();
 inputFindObjectClick();
+
+// function ifTagClose() {
+//   tagContainer.addEventListener("click", (e) => {
+//     let cible = e.target;
+//     let cibleClose = cible.getAttribute("class");
+//     if (cibleClose == "btn-close") {
+//       console.log(arrayTag.length);
+//       if (arrayTag.length === 1) {
+//         console.log("je marche");
+//         arrayTag = [];
+//       } else {
+//         let ciblelabelledby = cible.getAttribute("aria-labelledby");
+//         let stringValue = arrayTag.join(",").replace(`,${ciblelabelledby}`, "");
+//         arrayTag = stringValue.split(",");
+//       }
+//       // arrayTag.splice(index, 1);
+//       // console.log(ciblelabelledby);
+//       // console.log(arrayTemp);
+
+//       // function bou() {
+//       //   var chaine = "bonjour tous tous le le monde";
+//       //   alert(chaine);
+//       //   if (chaine.indexOf("tous tous le") >= 0) {
+//       //     chaine = chaine.replace("tous le", "");
+//       //     alert(chaine);
+//       //   }
+//       // }
+//       // console.log(ciblelabelledby);
+//     }
+//     //console.log(arrayTag);
+//     findObjectAffichage(tagContainer);
+//   });
+// }
+
+// function inputFindObject() {
+//   const searchInputPrincipal = document.getElementById("search__Input");
+//   const ficheArray = document.querySelectorAll(".fiche");
+//   searchInputPrincipal.addEventListener("keyup", () => {
+//     let InputSuggestion = "";
+//     for (let i = 0; i < recettes.length; i++) {
+//       let inputValue = searchInputPrincipal.value;
+//       const resultComparing = recettes[i].name.toLowerCase();
+//       if (resultComparing.indexOf(`${inputValue.toLowerCase()}`) !== -1) {
+//         if (inputValue !== "" && inputValue.length > 2) {
+//           InputSuggestion += `<p class="suggestion">${resultComparing}</p> `;
+//           document.querySelector(".container__suggestion").innerHTML =
+//             InputSuggestion;
+//         } else if (inputValue === "" || inputValue.length < 2) {
+//           ficheArray[i].style.display = "flex";
+//           document.querySelector(".container__suggestion").innerHTML = "";
+//           // const testLabel = ficheArray[i].getAttribute("aria-labelledby");
+//           // arrayTag.push(testLabel);
+//         }
+//       }
+//       // else {
+//       //   if (inputValue === "" && inputValue.length < 1) {
+//       //     const messageAlerte = document.querySelector(".message");
+//       //     messageAlerte.innerHTML = "Ce site ne contient pas recette";
+//       //   }
+//       // }
+//     }
+//   });
+//   //const test = document.querySelector(".search__Input");
+//   // const containerSuggestion = document.createElement("div");
+//   // containerSuggestion.classList.add("suggestion");
+//   // test.appendChild(containerSuggestion);
+//   //containerSuggestion.innerHTML = `${InputSuggestion}`;
+// }
