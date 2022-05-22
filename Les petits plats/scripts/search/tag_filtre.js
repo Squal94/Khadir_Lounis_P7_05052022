@@ -40,16 +40,12 @@ function filterTag(target, color) {
       tagContainer.appendChild(tagDiv);
       tagDiv.innerHTML = tagAffichage;
       arrayTag.push(text);
-      //console.log(arrayTag);
     },
     false
   );
 }
 
 function findObjectAffichage(source) {
-  console.log("coucou25");
-
-  let checker = (arr, target) => target.every((v) => arr.includes(v));
   source.addEventListener("click", () => {
     let arrayFicheDisplayNone = [];
     const ficheArray = document.querySelectorAll(".fiche");
@@ -68,8 +64,9 @@ function findObjectAffichage(source) {
       for (let i = 0; i < valueOfIngredients.length; i++) {
         valueToCompare.push(valueOfIngredients[i].ingredient.toLowerCase());
       }
+      console.log(checker(arrayTag, valueToCompare));
 
-      if (checker(valueToCompare, arrayTag) === false) {
+      if (checker(arrayTag, valueToCompare) === false) {
         arrayFicheDisplayNone.push(recettes[i].name);
       }
     }
@@ -113,18 +110,23 @@ function inputFindObject() {
     for (let i = 0; i < recettes.length; i++) {
       let inputValue = searchInputPrincipal.value;
       const resultComparing = recettes[i].name.toLowerCase();
-      if (resultComparing.includes(inputValue.toLowerCase())) {
+      if (resultComparing.indexOf(`${inputValue.toLowerCase()}`) !== -1) {
         if (inputValue !== "" && inputValue.length > 2) {
           InputSuggestion += `<p class="suggestion">${resultComparing}</p> `;
           document.querySelector(".container__suggestion").innerHTML =
             InputSuggestion;
-        } else if (inputValue === "" || inputValue.length < 3) {
+        } else if (inputValue === "" || inputValue.length < 2) {
           ficheArray[i].style.display = "flex";
+          document.querySelector(".container__suggestion").innerHTML = "";
+          // const testLabel = ficheArray[i].getAttribute("aria-labelledby");
+          // arrayTag.push(testLabel);
         }
       }
       // else {
-      //   const messageAlerte = document.querySelector(".message");
-      //   messageAlerte.innerHTML = "Ce site ne contient pas recette";
+      //   if (inputValue === "" && inputValue.length < 1) {
+      //     const messageAlerte = document.querySelector(".message");
+      //     messageAlerte.innerHTML = "Ce site ne contient pas recette";
+      //   }
       // }
     }
   });
@@ -136,14 +138,14 @@ function inputFindObject() {
 }
 
 function inputFindLink() {
+  const ingredientAllLink = containerIngredient.querySelectorAll(".link");
   ingredientInput.addEventListener("keyup", () => {
-    const ingredientAllLink = containerIngredient.querySelectorAll(".link");
     const expendBtn = document.querySelector(".ingredientBtn");
     //expendBtn.click();
     for (let i = 0; i < ingredientAllLink.length; i++) {
       let inputValue = ingredientInput.value;
       const resultComparing = ingredientAllLink[i].textContent.toLowerCase();
-      if (resultComparing.includes(inputValue.toLowerCase())) {
+      if (resultComparing.indexOf(`${inputValue}`) !== -1) {
         ingredientAllLink[i].style.display = "block";
       } else {
         ingredientAllLink[i].style.display = "none";
@@ -154,10 +156,24 @@ function inputFindLink() {
 
 function inputFindObjectClick() {
   containerSuggestion.addEventListener("mouseup", (e) => {
-    arrayTag = [];
     arrayTag.push(e.target.textContent);
     findObjectAffichage(containerSuggestion);
   });
+}
+
+function checker(fixedArray, inputArray) {
+  let fixedArraylen = fixedArray.length;
+  let inputArraylen = inputArray.length;
+  if (fixedArraylen <= inputArraylen) {
+    for (var i = 0; i < fixedArraylen; i++) {
+      if (!(inputArray.indexOf(fixedArray[i]) >= 0)) {
+        return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  return true;
 }
 
 filterTag(containerIngredient, ingredientColor);
@@ -166,5 +182,5 @@ filterTag(containerUstensil, ustensileColor);
 findObjectAffichage(changeTag);
 ifTagClose();
 inputFindObject();
-inputFindObjectClick();
 inputFindLink();
+inputFindObjectClick();
