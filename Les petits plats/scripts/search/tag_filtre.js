@@ -84,7 +84,9 @@ function findObjectAffichage(source) {
           ficheArray[i].getAttribute("aria-labelledby")
         ) === -1
       ) {
-        ficheArray[i].style.display = "flex";
+        if (arrayIngredientTemp.length == 0) {
+          ficheArray[i].style.display = "flex";
+        }
       }
     }
   });
@@ -98,11 +100,13 @@ function ifTagClose() {
       if (arrayTag.length === 1) {
         arrayTag = [];
         findObjectAffichage(tagContainer);
+        console.log(arrayTag);
       } else {
         let ciblelabelledby = cible.getAttribute("aria-labelledby");
         let stringValue = arrayTag.join(",").replace(`,${ciblelabelledby}`, "");
         arrayTag = stringValue.split(",");
         findObjectAffichage(tagContainer);
+        console.log(arrayTag);
       }
     }
   });
@@ -205,10 +209,10 @@ function supprLinkInFiltre(array, arrayCompare) {
   }
 }
 
+findObjectAffichage(changeTag);
 filterTag(containerIngredient, ingredientColor);
 filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
-findObjectAffichage(changeTag);
 ifTagClose();
 inputFindLink(ingredientInput, ingredientAllLink);
 inputFindLink(appareilInput, appareilAllLink);
