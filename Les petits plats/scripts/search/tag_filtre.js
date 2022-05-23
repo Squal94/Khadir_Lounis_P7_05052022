@@ -17,8 +17,13 @@ const tagContainer = document.querySelector(".tag");
 const ingredientAllLink = containerIngredient.querySelectorAll(".link");
 const appareilAllLink = containerAppareil.querySelectorAll(".link");
 const ustensilAllLink = containerUstensil.querySelectorAll(".link");
+const searchInputPrincipal = document.getElementById("search__Input");
 
 let arrayTag = [];
+let arrayIngredientTemp = [];
+let arrayUstensilsTemp = [];
+let arrayAppareilsTemp = [];
+
 let ingredientColor = "ingredientColor";
 let ustensileColor = "ustensileColor";
 let appareilColor = "appareilColor";
@@ -95,16 +100,13 @@ function ifTagClose() {
     let cible = e.target;
     let cibleClose = cible.getAttribute("class");
     if (cibleClose == "btn-close") {
-      console.log(arrayTag.length);
       if (arrayTag.length === 1) {
-        console.log("je marche");
         arrayTag = [];
         findObjectAffichage(tagContainer);
       } else {
         let ciblelabelledby = cible.getAttribute("aria-labelledby");
         let stringValue = arrayTag.join(",").replace(`,${ciblelabelledby}`, "");
         arrayTag = stringValue.split(",");
-        console.log(arrayTag);
         findObjectAffichage(tagContainer);
       }
     }
@@ -112,7 +114,6 @@ function ifTagClose() {
 }
 
 function inputFindObject() {
-  const searchInputPrincipal = document.getElementById("search__Input");
   const ficheArray = document.querySelectorAll(".fiche");
   searchInputPrincipal.addEventListener("keyup", () => {
     let InputSuggestion = "";
@@ -124,13 +125,34 @@ function inputFindObject() {
           InputSuggestion += `<p class="suggestion">${resultComparing}</p> `;
           document.querySelector(".container__suggestion").innerHTML =
             InputSuggestion;
+          ficheArray[i].style.display = "flex";
+          let arrayTampon = [...recettes[i].ingredients];
+          for (let x = 0; x < arrayTampon.length; x++) {
+            arrayIngredientTemp.push(
+              `${arrayTampon[x].ingredient.toLowerCase()}`
+            );
+          }
+          for (let x = 0; x < recettes[i].ustensils.length; x++) {
+            arrayUstensilsTemp.push(
+              `${recettes[i].ustensils[x].toLowerCase()}`
+            );
+          }
+          arrayAppareilsTemp.push(`${recettes[i].appliance.toLowerCase}`);
         } else if (inputValue === "" || inputValue.length < 2) {
           ficheArray[i].style.display = "flex";
           arrayTag = [];
           document.querySelector(".container__suggestion").innerHTML = "";
+          arrayIngredientTemp = [];
+          arrayUstensilsTemp = [];
+          arrayAppareilsTemp = [];
         } else {
         }
+      } else {
+        ficheArray[i].style.display = "none";
       }
+      supprLinkInFiltre(ingredientAllLink, arrayIngredientTemp);
+      supprLinkInFiltre(ustensilAllLink, arrayUstensilsTemp);
+      supprLinkInFiltre(appareilAllLink, arrayAppareilsTemp);
     }
   });
 }
@@ -160,7 +182,7 @@ function checker(fixedArray, inputArray) {
   let fixedArraylen = fixedArray.length;
   let inputArraylen = inputArray.length;
   if (fixedArraylen <= inputArraylen) {
-    for (var i = 0; i < fixedArraylen; i++) {
+    for (let i = 0; i < fixedArraylen; i++) {
       if (!(inputArray.indexOf(fixedArray[i]) >= 0)) {
         return false;
       }
@@ -169,6 +191,23 @@ function checker(fixedArray, inputArray) {
     return false;
   }
   return true;
+}
+
+function supprLinkInFiltre(array, arrayCompare) {
+  if (arrayCompare.length > 0) {
+    for (let i = 0; i < array.length; i++) {
+      let ciblelabelledby = array[i].getAttribute("aria-labelledby");
+      if (arrayCompare.indexOf(`${ciblelabelledby}`) !== -1) {
+        array[i].style.display = "block";
+      } else {
+        array[i].style.display = "none";
+      }
+    }
+  } else {
+    for (let i = 0; i < array.length; i++) {
+      array[i].style.display = "block";
+    }
+  }
 }
 
 filterTag(containerIngredient, ingredientColor);
@@ -187,7 +226,7 @@ inputFindObjectClick();
 //     let cible = e.target;
 //     let cibleClose = cible.getAttribute("class");
 //     if (cibleClose == "btn-close") {
-//       console.log(arrayTag.length);
+//       .log(arrayTag.length);
 //       if (arrayTag.length === 1) {
 //         console.log("je marche");
 //         arrayTag = [];
@@ -198,7 +237,7 @@ inputFindObjectClick();
 //       }
 //       // arrayTag.splice(index, 1);
 //       // console.log(ciblelabelledby);
-//       // console.log(arrayTemp);
+//       // .log(arrayTemp);
 
 //       // function bou() {
 //       //   var chaine = "bonjour tous tous le le monde";
@@ -248,4 +287,46 @@ inputFindObjectClick();
 //   // containerSuggestion.classList.add("suggestion");
 //   // test.appendChild(containerSuggestion);
 //   //containerSuggestion.innerHTML = `${InputSuggestion}`;
+// }
+
+// function inputFindObject() {
+//   const searchInputPrincipal = document.getElementById("search__Input");
+//   const ficheArray = document.querySelectorAll(".fiche");
+//   searchInputPrincipal.addEventListener("keyup", () => {
+//     let InputSuggestion = "";
+//     for (let i = 0; i < recettes.length; i++) {
+//       let inputValue = searchInputPrincipal.value;
+//       const resultComparing = recettes[i].name.toLowerCase();
+//       if (resultComparing.indexOf(`${inputValue.toLowerCase()}`) !== -1) {
+//         if (inputValue !== "" && inputValue.length > 2) {
+//           InputSuggestion += `<p class="suggestion">${resultComparing}</p> `;
+//           document.querySelector(".container__suggestion").innerHTML =
+//             InputSuggestion;
+//           ficheArray[i].style.display = "flex";
+//           let arrayTampon = [...recettes[i].ingredients];
+//           for (let x = 0; x < arrayTampon.length; x++) {
+//             arrayIngredientTemp.push(
+//               `${arrayTampon[x].ingredient.toLowerCase()}`
+//             );
+//           }
+//           for (let x = 0; x < recettes[i].ustensils.length; x++) {
+//             arrayUstensilsTemp.push(
+//               `${recettes[i].ustensils[x].toLowerCase()}`
+//             );
+//           }
+//           arrayAppareilsTemp.push(`${recettes[i].appliance.toLowerCase}`);
+//         } else if (inputValue === "" || inputValue.length < 2) {
+//           ficheArray[i].style.display = "flex";
+//           arrayTag = [];
+//           document.querySelector(".container__suggestion").innerHTML = "";
+//           arrayIngredientTemp = [];
+//           arrayUstensilsTemp = [];
+//           arrayAppareilsTemp = [];
+//         } else {
+//         }
+//       } else {
+//         ficheArray[i].style.display = "none";
+//       }
+//     }
+//   });
 // }
