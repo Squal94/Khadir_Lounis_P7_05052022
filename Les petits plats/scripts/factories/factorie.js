@@ -24,7 +24,6 @@ function filtre() {
 //-------------- factorie fiche recette ----------------
 
 function ficheRecette(data) {
-  console.log(data);
   const cardMain = document.getElementById("cardMain");
 
   const fiche = document.createElement("article");

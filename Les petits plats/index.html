@@ -51,18 +51,22 @@
           />
         </button>
       </div>
+      <div class="container__suggestion"></div>
     </section>
+    <p
+      class="message d-flex flex-row justify-content-center align-content-center mx-auto my-4 w-100"
+    ></p>
 
     <!-- Section Htag  -->
     <section
       class="tag d-flex flex-row justify-content-start align-content-center gap-5 mx-auto"
     ></section>
-    <p>branch fonctionnelle</p>
+    <p>test fonctionnelle</p>
 
     <!-- Section filtre de recherche -->
     <section class="filtres position-relative mx-auto">
       <div
-        class="mx-auto d-flex flex-row flex-nowrap mx-auto my-5 gap-5 position-absolute"
+        class="filtres__container mx-auto d-flex flex-row flex-nowrap mx-auto my-5 gap-5 position-absolute"
       >
         <div class="accordion" id="accordionPanelsStayOpenExample">
           <div class="item ingredientColor position-relative">
@@ -72,7 +76,7 @@
             >
               <button
                 id="btnFiltre"
-                class="accordion-button collapsed position-absolute p-0"
+                class="accordion-button ingredientBtn collapsed position-absolute p-0"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseOne"
@@ -91,7 +95,7 @@
             </div>
           </div>
         </div>
-        <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion" id="accordionPanelsStayOpenExample2">
           <div class="item appareilColor position-relative">
             <div
               class="accordion-header appareil filtre p-1"
@@ -118,7 +122,7 @@
             </div>
           </div>
         </div>
-        <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion" id="accordionPanelsStayOpenExample3">
           <div class="item ustensileColor position-relative">
             <div
               class="accordion-header ustensile filtre p-1"
@@ -183,6 +187,5 @@
       src="scripts/factories/filtreFactoryAffichage.js"
     ></script>
     <script type="module" src="/scripts/search/tag_filtre.js"></script>
-    <script type="module" src="/scripts/search/algo_filtre.js"></script>
   </body>
 </html>
