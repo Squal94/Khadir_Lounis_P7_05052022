@@ -1,9 +1,4 @@
-import {
-  arrayIngredients,
-  arrayAppareils,
-  arrayUstensils,
-  recettes,
-} from "../factories/filtreFactoryAffichage.js";
+import { recettes } from "../factories/filtreFactoryAffichage.js";
 
 const containerIngredient = document.querySelector(".ingredientContent");
 const containerAppareil = document.querySelector(".appareilContent");
