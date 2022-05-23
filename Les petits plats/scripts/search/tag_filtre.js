@@ -134,7 +134,7 @@ function inputFindObject() {
               `${recettes[i].ustensils[x].toLowerCase()}`
             );
           }
-          arrayAppareilsTemp.push(`${recettes[i].appliance.toLowerCase}`);
+          arrayAppareilsTemp.push(`${recettes[i].appliance.toLowerCase()}`);
         } else if (inputValue === "" || inputValue.length < 2) {
           ficheArray[i].style.display = "flex";
           arrayTag = [];
@@ -147,10 +147,10 @@ function inputFindObject() {
       } else {
         ficheArray[i].style.display = "none";
       }
-      supprLinkInFiltre(ingredientAllLink, arrayIngredientTemp);
-      supprLinkInFiltre(ustensilAllLink, arrayUstensilsTemp);
-      supprLinkInFiltre(appareilAllLink, arrayAppareilsTemp);
     }
+    supprLinkInFiltre(ingredientAllLink, arrayIngredientTemp);
+    supprLinkInFiltre(ustensilAllLink, arrayUstensilsTemp);
+    supprLinkInFiltre(appareilAllLink, arrayAppareilsTemp);
   });
 }
 
@@ -191,11 +191,13 @@ function checker(fixedArray, inputArray) {
 }
 
 function supprLinkInFiltre(array, arrayCompare) {
+  // arrayTag = [];
   if (arrayCompare.length > 0) {
     for (let i = 0; i < array.length; i++) {
       let ciblelabelledby = array[i].getAttribute("aria-labelledby");
       if (arrayCompare.indexOf(`${ciblelabelledby}`) !== -1) {
         array[i].style.display = "block";
+        //arrayTag.push(`${ciblelabelledby}`);
       } else {
         array[i].style.display = "none";
       }
