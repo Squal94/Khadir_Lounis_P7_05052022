@@ -40,13 +40,14 @@ function filterTag(target, color) {
       let cible = e.target;
       let text = cible.textContent;
       const tagDiv = document.createElement("div");
-      const tagAffichage = `<div class="alert ${color} alert-dismissible fade show my-4" role="alert">
+      const tagAffichage = `<div class="alert ${color} alert-dismissible fade show my-4" role="alert" aria-labelledby="${text}">
           <p>${text}</p>
           <button
             type="button"
             class="btn-close"
             data-dismiss="alert"
             aria-label="Close"
+            aria-labelledby="${text}"
           ></button>
        </div>`;
       tagContainer.appendChild(tagDiv);
@@ -101,26 +102,30 @@ function inputPrincipalFilter() {
   });
 }
 
-function captureTag() {
-  containerIngredient.addEventListener("click", (e) => {
+function captureTag(action) {
+  action.addEventListener("click", (e) => {
     arrayCompare = [];
     if (e.target.getAttribute("class").includes("link") === true) {
       arrayTag.push(e.target.textContent);
-      recettes.forEach((recette) => {
-        let valueToCompare = [];
-        recette.ingredients.some((object) => {
-          valueToCompare.push(object.ingredient.toLowerCase());
-        });
-        if (
-          arrayTag.every((v) => valueToCompare.includes(v)) == true ||
-          valueToCompare.length == 0
-        ) {
-          arrayCompare.push(recette.name);
-        }
-      });
-      affichageFiche(arrayCompare);
+      recettesCompare();
     }
   });
+}
+
+function recettesCompare() {
+  recettes.forEach((recette) => {
+    let valueToCompare = [];
+    recette.ingredients.some((object) => {
+      valueToCompare.push(object.ingredient.toLowerCase());
+    });
+    if (
+      arrayTag.every((v) => valueToCompare.includes(v)) == true ||
+      valueToCompare.length == 0
+    ) {
+      arrayCompare.push(recette.name);
+    }
+  });
+  affichageFiche(arrayCompare);
 }
 
 function affichageFiche(array) {
@@ -150,11 +155,28 @@ function supprLinkInFiltre(array, arrayCompare) {
     });
   }
 }
+
+function ifTagClose() {
+  tagContainer.addEventListener("mousedown", (e) => {
+    let cible = e.target;
+    let cibleClose = cible.getAttribute("class");
+    if (cibleClose == "btn-close") {
+      let ciblelabelledby = cible.getAttribute("aria-labelledby");
+      console.log(ciblelabelledby);
+      let index = arrayTag.indexOf(ciblelabelledby);
+      arrayTag.splice(index, 1);
+      console.log(arrayTag);
+    }
+    recettesCompare();
+  });
+}
+
 filterTag(containerIngredient, ingredientColor);
 filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
 inputPrincipalFilter();
-captureTag();
+captureTag(containerIngredient);
+ifTagClose();
 
 // function findObjectAffichage(source) {
 //   let checker = (arr, target) => target.every((v) => arr.includes(v));
