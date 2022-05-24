@@ -23,6 +23,7 @@ const allFiche = document.querySelectorAll(".fiche");
 let arrayTag = [];
 let arrayTemp = [];
 let arrayCompare = [];
+let arrayInputPrincipal = [];
 let arrayIngredientTemp = [];
 let arrayUstensilsTemp = [];
 let arrayAppareilsTemp = [];
@@ -30,8 +31,6 @@ let arrayAppareilsTemp = [];
 let ingredientColor = "ingredientColor";
 let ustensileColor = "ustensileColor";
 let appareilColor = "appareilColor";
-
-//let checker = (arr, target) => target.every((v) => arr.includes(v));
 
 function filterTag(target, color) {
   target.addEventListener(
@@ -85,6 +84,9 @@ function inputPrincipalFilter() {
             }
             arrayTemp = [...new Set(arrayTemp)];
           });
+
+          arrayInputPrincipal.push(fiche);
+          //arrayCompare.push(ficheLabelledby);
         } else {
           fiche.style.display = "none";
         }
@@ -107,12 +109,12 @@ function captureTag(action) {
     arrayCompare = [];
     if (e.target.getAttribute("class").includes("link") === true) {
       arrayTag.push(e.target.textContent);
-      recettesCompare();
+      arrCompare();
     }
   });
 }
 
-function recettesCompare() {
+function arrCompare() {
   recettes.forEach((recette) => {
     let valueToCompare = [];
     recette.ingredients.some((object) => {
@@ -129,14 +131,25 @@ function recettesCompare() {
 }
 
 function affichageFiche(array) {
-  allFiche.forEach((fiche) => {
-    let tempCompare = fiche.getAttribute("aria-labelledby");
-    if (array.includes(`${tempCompare}`) === true) {
-      fiche.style.display = "block";
-    } else {
-      fiche.style.display = "none";
-    }
-  });
+  if (arrayInputPrincipal.length > 0) {
+    arrayInputPrincipal.forEach((fiche) => {
+      let tempCompare = fiche.getAttribute("aria-labelledby");
+      if (array.includes(`${tempCompare}`) === true) {
+        fiche.style.display = "flex";
+      } else {
+        fiche.style.display = "none";
+      }
+    });
+  } else {
+    allFiche.forEach((fiche) => {
+      let tempCompare = fiche.getAttribute("aria-labelledby");
+      if (array.includes(`${tempCompare}`) === true) {
+        fiche.style.display = "flex";
+      } else {
+        fiche.style.display = "none";
+      }
+    });
+  }
 }
 
 function supprLinkInFiltre(array, arrayCompare) {
@@ -144,14 +157,14 @@ function supprLinkInFiltre(array, arrayCompare) {
     array.forEach((item) => {
       let ciblelabelledby = item.textContent;
       if (arrayCompare.indexOf(`${ciblelabelledby}`) !== -1) {
-        item.style.display = "block";
+        item.style.display = "flex";
       } else {
         item.style.display = "none";
       }
     });
   } else {
     array.forEach((item) => {
-      item.style.display = "block";
+      item.style.display = "flex";
     });
   }
 }
@@ -167,7 +180,7 @@ function ifTagClose() {
       arrayTag.splice(index, 1);
       console.log(arrayTag);
     }
-    recettesCompare();
+    arrCompare();
   });
 }
 
