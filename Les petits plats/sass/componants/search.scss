@@ -9,3 +9,12 @@
 .form-control {
   height: 70px;
 }
+
+.suggestion {
+  margin-bottom: 0;
+  padding: 0.5rem;
+}
+
+.suggestion:hover {
+  background-color: rgba(132, 132, 184, 0.577);
+}
