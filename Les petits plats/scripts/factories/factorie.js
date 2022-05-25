@@ -47,7 +47,7 @@ function ficheRecette(data) {
 
   const timePic = document.createElement("img");
   timePic.classList.add("fiche__title__time--pic");
-  timePic.setAttribute("src", "./../assets/image/lhorloge.png");
+  timePic.setAttribute("src", "assets/image/lhorloge.png");
 
   const timeString = document.createElement("p");
   timeString.classList.add("fiche__title__time--string");
