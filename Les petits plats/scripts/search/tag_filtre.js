@@ -9,9 +9,9 @@ const containerIngredient = document.querySelector(".ingredientContent");
 const containerAppareil = document.querySelector(".appareilContent");
 const containerUstensil = document.querySelector(".ustensileContent");
 const containerSuggestion = document.querySelector(".container__suggestion");
-const appareilInput = document.querySelector(".appareilInput");
-const ingredientInput = document.querySelector(".ingredientInput");
-const ustensilInput = document.querySelector(".ustensileInput");
+const appareilInput = document.querySelector(".appareilColor");
+const ingredientInput = document.querySelector(".ingredientColor");
+const ustensilInput = document.querySelector(".ustensileColor");
 const changeTag = document.querySelector(".filtres__container");
 const tagContainer = document.querySelector(".tag");
 const ingredientAllLink = containerIngredient.querySelectorAll(".link");
@@ -51,6 +51,7 @@ function filterTag(target, color) {
        </div>`;
       tagContainer.appendChild(tagDiv);
       tagDiv.innerHTML = tagAffichage;
+      arrayTag.push(text);
     },
     false
   );
@@ -133,6 +134,7 @@ function arrCompare() {
     }
   });
   affichageFiche(arrayCompare);
+  arrayTag = [...new Set(arrayTag)];
   console.log(arrayTag);
 }
 
@@ -190,6 +192,20 @@ function ifTagClose() {
   });
 }
 
+function inputFindLink(action, array) {
+  action.addEventListener("keyup", (e) => {
+    array.forEach((link) => {
+      let inputValue = e.target.value;
+      const resultComparing = link.textContent.toLowerCase();
+      if (resultComparing.includes(`${inputValue}`) == true) {
+        link.style.display = "block";
+      } else {
+        link.style.display = "none";
+      }
+    });
+  });
+}
+
 filterTag(containerIngredient, ingredientColor);
 filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
@@ -198,6 +214,7 @@ captureTag(containerIngredient);
 captureTag(containerAppareil);
 captureTag(containerUstensil);
 ifTagClose();
+inputFindLink(ingredientInput, ingredientAllLink);
 
 // function findObjectAffichage(source) {
 //   let checker = (arr, target) => target.every((v) => arr.includes(v));
