@@ -124,7 +124,6 @@ function arrCompare() {
   });
   affichageFiche(arrayCompare);
   arrayTag = [...new Set(arrayTag)];
-  console.log(arrayTag);
 }
 
 function affichageFiche(array) {
