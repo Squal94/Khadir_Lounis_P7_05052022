@@ -120,6 +120,11 @@ function arrCompare() {
     recette.ingredients.some((object) => {
       valueToCompare.push(object.ingredient.toLowerCase());
     });
+    recette.ustensils.some((object) => {
+      valueToCompare.push(object.toLowerCase());
+    });
+    valueToCompare.push(recette.appliance.toLowerCase());
+
     if (
       arrayTag.every((v) => valueToCompare.includes(v)) == true ||
       valueToCompare.length == 0
@@ -128,6 +133,7 @@ function arrCompare() {
     }
   });
   affichageFiche(arrayCompare);
+  console.log(arrayTag);
 }
 
 function affichageFiche(array) {
@@ -189,6 +195,8 @@ filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
 inputPrincipalFilter();
 captureTag(containerIngredient);
+captureTag(containerAppareil);
+captureTag(containerUstensil);
 ifTagClose();
 
 // function findObjectAffichage(source) {
