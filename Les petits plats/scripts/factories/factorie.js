@@ -33,7 +33,7 @@ function ficheRecette(data) {
 
   const img = document.createElement("img");
   img.classList.add("fiche__vignette");
-  img.setAttribute("src", `/assets/recette/${data.image}`);
+  img.setAttribute("src", `assets/recette/${data.image}`);
 
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("fiche__title");
@@ -47,7 +47,7 @@ function ficheRecette(data) {
 
   const timePic = document.createElement("img");
   timePic.classList.add("fiche__title__time--pic");
-  timePic.setAttribute("src", "/assets/image/lhorloge.png");
+  timePic.setAttribute("src", "assets/image/lhorloge.png");
 
   const timeString = document.createElement("p");
   timeString.classList.add("fiche__title__time--string");
