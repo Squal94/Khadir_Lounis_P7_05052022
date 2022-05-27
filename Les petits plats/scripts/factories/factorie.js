@@ -12,21 +12,33 @@ function filtre() {
   const ingredient = document.querySelector(".ingredient");
   const appareil = document.querySelector(".appareil");
   const ustensile = document.querySelector(".ustensile");
+
   const ingredientInput = document.createElement("input");
   ingredientInput.classList.add("ingredientColor");
   ingredientInput.setAttribute("placeholder", "Ingredients");
+
   const appareilInput = document.createElement("input");
   appareilInput.classList.add("appareilColor");
   appareilInput.setAttribute("placeholder", "Appareils");
+
   const ustensileInput = document.createElement("input");
   ustensileInput.classList.add("ustensileColor");
   ustensileInput.setAttribute("placeholder", "Ustensiles");
+
+  // création dans le DOM
   ingredient.appendChild(ingredientInput);
   appareil.appendChild(appareilInput);
   ustensile.appendChild(ustensileInput);
 }
 
 //-------------- factorie fiche recette ----------------
+
+/**
+ * Factory de création de fiche recette
+ * @param {array} recette
+ * recettes est la copie de recipes.js qui est la base de donnée des recettes
+ * et recette sont les objets quelle contient
+ */
 
 function ficheRecette(data) {
   const cardMain = document.getElementById("cardMain");
@@ -76,6 +88,7 @@ function ficheRecette(data) {
   recetteTexte.classList.add("fiche__recette--texte");
   recetteTexte.innerText = `${data.description}`;
 
+  // création dans le DOM
   cardMain.appendChild(fiche);
   fiche.appendChild(img);
   fiche.appendChild(titleContainer);
@@ -90,15 +103,16 @@ function ficheRecette(data) {
 }
 
 //-------- fonction affichage de toute les recettes
+/**
+ * Boucle de création de toutes les fiches  de recette
+ * @param {array} recettes
+ * recettes est la copie de recipes.js qui est la base de donnée des recettes
+ */
 function mosaicRecette() {
   recettes.forEach((recette) => {
     ficheRecette(recette);
   });
 }
-
-//-------------fonction d'affichage des éléments cliquables des filtres------------------
-
-//
 
 function init() {
   filtre();
