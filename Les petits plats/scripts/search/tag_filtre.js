@@ -1,5 +1,7 @@
+// importation de recipes.js et clonage dans l'Array recettes
 import { recettes } from "../factories/filtreFactoryAffichage.js";
 
+// Déclaration de toutes les constantes utiles
 const containerIngredient = document.querySelector(".ingredientContent");
 const containerAppareil = document.querySelector(".appareilContent");
 const containerUstensil = document.querySelector(".ustensileContent");
@@ -14,6 +16,7 @@ const appareilAllLink = containerAppareil.querySelectorAll(".link");
 const ustensilAllLink = containerUstensil.querySelectorAll(".link");
 const searchInputPrincipal = document.getElementById("search__Input");
 
+// Déclaration de tous les arrays utilisés
 let arrayTag = [];
 let arrayIngredientTemp = [];
 let arrayUstensilsTemp = [];
@@ -22,6 +25,13 @@ let arrayAppareilsTemp = [];
 let ingredientColor = "ingredientColor";
 let ustensileColor = "ustensileColor";
 let appareilColor = "appareilColor";
+
+/**
+ * Factory de création des Tags au click d'un element dans les filtres
+ * @param {target} Container lié à l'action du click pour le addEventListener (filtres :ingredients ,appareils ,ustensils)
+ * @param {color} attribution de la couleur du tag selon le filtre utilisé
+ * Récupération de la valeur cliqué selon le container et création du tag selon la couleur du filtre
+ */
 
 function filterTag(target, color) {
   target.addEventListener(
@@ -47,6 +57,12 @@ function filterTag(target, color) {
     false
   );
 }
+
+/**
+ * Fonction de trie pour l'affichage des recettes dans main
+ * @param {source} action est la source de l'event pour lancer le tri
+ * Récupération de la valeur cliqué selon l'event et affichage des recettes triée selon l'action
+ */
 
 function findObjectAffichage(source) {
   source.addEventListener("click", () => {
@@ -92,6 +108,13 @@ function findObjectAffichage(source) {
   });
 }
 
+/**
+ * Fonction de fermeture des Tags
+ * @param {tagContainer} action si le clique capturer dans le tag container contient la class btn-close
+ * alors recupération de aria-labelledby liée
+ * et suppression de cette valeur dans arrayTag
+ */
+
 function ifTagClose() {
   tagContainer.addEventListener("click", (e) => {
     let cible = e.target;
@@ -109,6 +132,14 @@ function ifTagClose() {
     }
   });
 }
+
+/**
+ * Fonction de récupération de la valeur de l'input principal
+ * @param {searchInputPrincipal} Input l'input principal
+ * si la valeur récupérée est supérieure à 3 lettres alors création d'un array des recettes en display bloc.
+ * vérification des recettes correspondant a l'entrée et affichage
+ * et création de 3 arrays pour chaque ingrédient appareil et ustensils sélectionner
+ */
 
 function inputFindObject() {
   const ficheArray = document.querySelectorAll(".fiche");
@@ -154,6 +185,14 @@ function inputFindObject() {
   });
 }
 
+/**
+ * Fonction de récupération de la valeur de l'input principal
+ * @param {searchInputPrincipal} Input l'input principal
+ * si la valeur récupérée est supérieure à 3 lettres alors création d'un array des recettes en display bloc.
+ * vérification des recettes correspondant a l'entrée et affichage
+ * et création de 3 arrays  ingrédient appareil et ustensils lié au recette encore afficher
+ */
+
 function inputFindLink(action, array) {
   action.addEventListener("keyup", () => {
     for (let i = 0; i < array.length; i++) {
@@ -175,6 +214,13 @@ function inputFindObjectClick() {
   });
 }
 
+/**
+ * Fonction de trie qui nous permet de vérifier les valeurs à afficher si l'input principal est actif et les sous filtre aussi
+ * @param {array} arrayTag arrayTag est l'array lié au tag s'ils sont actifs
+ * @param {array} valueToCompare valueToCompare est l'array lié à l'input principal s'il est actif
+ *si une valeur d'ingrédient ustensile ou appareil dans arraytag est trouvées dans les valeurs des recettes liées à valuetocompare alors on retourne true sinon on retourne false
+ */
+
 function checker(fixedArray, inputArray) {
   let fixedArraylen = fixedArray.length;
   let inputArraylen = inputArray.length;
@@ -190,6 +236,13 @@ function checker(fixedArray, inputArray) {
   return true;
 }
 
+/**
+ * Fonction de suppression des valeur contenue dans les filtres
+ * @param {array} array est l'array de tous les liens disponible dans chaque filtre
+ * @param {arrayCompare}  array  est l'array lié à tous les ingrédients ustensiles et appareils liés aux recettes sélectionner dans l'input principal
+ *si la valeur entre les 2 tableaux est trouvée alors le lien reste actif sinon il passe en display none
+ */
+
 function supprLinkInFiltre(array, arrayCompare) {
   // arrayTag = [];
   if (arrayCompare.length > 0) {
@@ -197,7 +250,6 @@ function supprLinkInFiltre(array, arrayCompare) {
       let ciblelabelledby = array[i].getAttribute("aria-labelledby");
       if (arrayCompare.indexOf(`${ciblelabelledby}`) !== -1) {
         array[i].style.display = "block";
-        //arrayTag.push(`${ciblelabelledby}`);
       } else {
         array[i].style.display = "none";
       }
@@ -208,6 +260,8 @@ function supprLinkInFiltre(array, arrayCompare) {
     }
   }
 }
+
+// initialisation des funtions
 
 findObjectAffichage(changeTag);
 filterTag(containerIngredient, ingredientColor);
