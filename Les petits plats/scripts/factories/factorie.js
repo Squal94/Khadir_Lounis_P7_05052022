@@ -3,6 +3,11 @@ import { recipes } from "../../data/recipes.js";
 let recettes = [...recipes];
 
 // -----------   filtre   ------------
+/**
+ * Fonction de création des inputs dans les filtres
+ * @param {input}
+ * recupération des balises bootstrap et création des input couleur et class
+ */
 function filtre() {
   const ingredient = document.querySelector(".ingredient");
   const appareil = document.querySelector(".appareil");
