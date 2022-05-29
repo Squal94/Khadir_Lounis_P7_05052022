@@ -265,3 +265,26 @@ ifTagClose();
 inputFindLink(ingredientInput, ingredientAllLink);
 inputFindLink(appareilInput, appareilAllLink);
 inputFindLink(ustensilInput, ustensilAllLink);
+
+//--------------Avec methode Filter ---------------------
+
+// recettes.filter((recette) => {
+//   let recetteName = recette.name;
+//   if (recetteName.toLowerCase() === ficheLabelledby) {
+//     let arrayIngredients = [];
+//     let arrayUstensils = [];
+//     recette.ingredients.forEach((ingredients) => {
+//       arrayIngredients.push(ingredients.ingredient.toLowerCase());
+//     });
+//     recette.ustensils.forEach((ustensil) => {
+//       arrayUstensils.push(ustensil.toLowerCase());
+//     });
+//     filterRecipes = [
+//       recette.appliance.toLowerCase(),
+//       ...arrayUstensils,
+//       ...arrayIngredients,
+//     ];
+//     arrayTemp = [...arrayTemp, ...filterRecipes];
+//   }
+//   arrayTemp = [...new Set(arrayTemp)];
+// });
