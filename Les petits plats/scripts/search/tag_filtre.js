@@ -5,7 +5,6 @@ import { recettes } from "../factories/filtreFactoryAffichage.js";
 const containerIngredient = document.querySelector(".ingredientContent");
 const containerAppareil = document.querySelector(".appareilContent");
 const containerUstensil = document.querySelector(".ustensileContent");
-const containerSuggestion = document.querySelector(".container__suggestion");
 const appareilInput = document.querySelector(".appareilInput");
 const ingredientInput = document.querySelector(".ingredientInput");
 const ustensilInput = document.querySelector(".ustensileInput");
@@ -127,7 +126,6 @@ function ifTagClose() {
         let ciblelabelledby = cible.getAttribute("aria-labelledby");
         let stringValue = arrayTag.join(",").replace(`,${ciblelabelledby}`, "");
         arrayTag = stringValue.split(",");
-        console.log(arrayTag);
         findObjectAffichage(tagContainer);
       }
     }
@@ -167,14 +165,10 @@ function inputFindObject() {
             );
           }
           arrayAppareilsTemp.push(`${recettes[i].appliance.toLowerCase()}`);
-        } else if (inputValue === "" || inputValue.length < 2) {
+        }
+        if (inputValue === "" || inputValue.length < 2) {
           ficheArray[i].style.display = "flex";
-          arrayTag = [];
           document.querySelector(".container__suggestion").innerHTML = "";
-          arrayIngredientTemp = [];
-          arrayUstensilsTemp = [];
-          arrayAppareilsTemp = [];
-        } else {
         }
       } else {
         ficheArray[i].style.display = "none";
