@@ -116,17 +116,18 @@ function findObjectAffichage(source) {
  */
 
 function ifTagClose() {
-  tagContainer.addEventListener("click", (e) => {
+  tagContainer.addEventListener("mouseup", (e) => {
     let cible = e.target;
     let cibleClose = cible.getAttribute("class");
     if (cibleClose == "btn-close") {
-      if (arrayTag.length === 1) {
+      if (arrayTag.length == 1) {
         arrayTag = [];
         findObjectAffichage(tagContainer);
       } else {
         let ciblelabelledby = cible.getAttribute("aria-labelledby");
         let stringValue = arrayTag.join(",").replace(`,${ciblelabelledby}`, "");
         arrayTag = stringValue.split(",");
+        console.log(arrayTag);
         findObjectAffichage(tagContainer);
       }
     }
