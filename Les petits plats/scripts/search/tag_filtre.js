@@ -290,20 +290,7 @@ inputFindLink(ustensilInput, ustensilAllLink);
 // });
 
 //----------------- deuxieme methode avec Filter ---------------------
-// function inputPrincipalFilter() {
-//   const fichesArray = document.querySelectorAll(".fiche");
-//   searchInputPrincipal.addEventListener("keyup", (e) => {
-//     let inputValue = e.target.value;
-//     if (inputValue !== "" && inputValue.length > 2) {
-//       let InputSuggestion = "";
-//       fichesArray.forEach((fiche) => {
-//         let ficheLabelledby = fiche
-//           .getAttribute("aria-labelledby")
-//           .toLowerCase();
-//         if (ficheLabelledby.includes(`${inputValue.toLowerCase()}`)) {
-//           InputSuggestion += `<p class="suggestion">${ficheLabelledby}</p> `;
-//           document.querySelector(".container__suggestion").innerHTML =
-//             InputSuggestion;
+
 //           recettes.filter((recette) => {
 //             let recetteName = recette.name;
 //             let arrayIngredients = [];
@@ -320,20 +307,3 @@ inputFindLink(ustensilInput, ustensilAllLink);
 //             }
 //             arrayTemp = [...new Set(arrayTemp)];
 //           });
-//           arrayInputPrincipal.push(fiche);
-//         } else {
-//           fiche.style.display = "none";
-//         }
-//       });
-//     } else {
-//       document.querySelector(".container__suggestion").innerHTML = "";
-//       arrayTemp = [];
-//       fichesArray.forEach((fiche) => {
-//         fiche.style.display = "flex";
-//       });
-//     }
-//     supprLinkInFiltre(ingredientAllLink, arrayTemp);
-//     supprLinkInFiltre(appareilAllLink, arrayTemp);
-//     supprLinkInFiltre(ustensilAllLink, arrayTemp);
-//   });
-// }
