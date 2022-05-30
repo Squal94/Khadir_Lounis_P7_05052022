@@ -207,12 +207,12 @@ function inputFindLink(action, array) {
   });
 }
 
-function inputFindObjectClick() {
-  containerSuggestion.addEventListener("mouseup", (e) => {
-    arrayTag.push(e.target.textContent);
-    findObjectAffichage(containerSuggestion);
-  });
-}
+// function inputFindObjectClick() {
+//   containerSuggestion.addEventListener("mouseup", (e) => {
+//     arrayTag.push(e.target.textContent);
+//     findObjectAffichage(containerSuggestion);
+//   });
+// }
 
 /**
  * Fonction de trie qui nous permet de vérifier les valeurs à afficher si l'input principal est actif et les sous filtre aussi
@@ -272,4 +272,3 @@ inputFindLink(ingredientInput, ingredientAllLink);
 inputFindLink(appareilInput, appareilAllLink);
 inputFindLink(ustensilInput, ustensilAllLink);
 inputFindObject();
-inputFindObjectClick();
