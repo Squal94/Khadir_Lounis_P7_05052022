@@ -57,6 +57,15 @@ function filterTag(target, color) {
   );
 }
 
+/**
+ * Fonction de récupération de la valeur de l'input principal
+ * @param {searchInputPrincipal} Input l'input principal
+ * si la valeur récupérée est supérieure à 3 lettres alors création d'un array des recettes en display bloc.
+ * vérification des recettes correspondant a l'entrée et affichage de ces recettes.
+ * et création de 2 arrays , un pour chaque ingrédient appareil et ustensils affiché dans la recette (arrayTemp)
+ * et création de  arrayInputPrincipal qui contient les noms des recettes correspondantes
+ */
+
 function inputPrincipalFilter() {
   const fichesArray = document.querySelectorAll(".fiche");
   searchInputPrincipal.addEventListener("keyup", (e) => {
@@ -112,6 +121,12 @@ function inputPrincipalFilter() {
   });
 }
 
+/**
+ * Fonction de récupération de la valeur du tag sélectionné
+ * @param {action}  action de récupération au click selon le container du filtre sélectionné
+ * si l'element cliqué contient la class link alors la valeur est push dans arrayTag
+ */
+
 function captureTag(action) {
   action.addEventListener("click", (e) => {
     arrayCompare = [];
@@ -122,6 +137,14 @@ function captureTag(action) {
     }
   });
 }
+
+/**
+ * Fonction de comparaison entre ArrayTag et valueToCompare
+ * @param {array}  ArrayTag importaion de arrayTag et création de l'array valueToCompare
+ * valueToCompare contient toutes les valeurs ustensiles appareil et ingrédient de toutes les recettes
+ * et les compare a arrayTag qui contient toutes les valeurs des tags sélectionnés
+ * si une concordance est trouvée alors le nom de la recette est push dans l'arrayCompare
+ */
 
 function arrCompare() {
   for (let i = 0; i < recettes.length; i++) {
@@ -142,6 +165,12 @@ function arrCompare() {
   affichageFiche(arrayCompare);
   arrayTag = [...new Set(arrayTag)];
 }
+
+/**
+ * Fonction d'affichage des recettes trié
+ * @param {array}  arrayCompare cet array contient tous les noms de recettes qui sont à affiche après les trie
+ * la fonction contient aussi un systeme de comparaison avec arrayInputPrincipal si cet array contient un index superieur 0
+ */
 
 function affichageFiche(array) {
   if (arrayInputPrincipal.length > 0) {
@@ -165,6 +194,13 @@ function affichageFiche(array) {
   }
 }
 
+/**
+ * Fonction suppression des liens dans les filtres
+ * @param {array}  array cet array contient les liens de chaque filtre selon le container sélectionner
+ * @param {arrayCompare} arrayTemp cet array contient tous les ingrédients,ustensiles et appareils des recettes sélectionner dans input principal
+ * cette fonction compare si arrayTemp est actif les valeurs à afficher dans les filtres.
+ */
+
 function supprLinkInFiltre(array, arrayCompare) {
   if (arrayCompare.length > 1) {
     for (let i = 0; i < array.length; i++) {
@@ -181,6 +217,12 @@ function supprLinkInFiltre(array, arrayCompare) {
     }
   }
 }
+
+/**
+ * Fonction de fermeture des tags
+ * @param {source}  tagContainer event au click :
+ * si le clique sur l'element contient la class btn-close, alors recuparation de la valeur contenue dans le tag et supression de la valeur identique dans arraytag.
+ */
 
 function ifTagClose() {
   tagContainer.addEventListener("mousedown", (e) => {
@@ -199,6 +241,14 @@ function ifTagClose() {
   });
 }
 
+/**
+ * Fonction de sélection des valeurs contenues dans les filtres
+ * @param {action}  action est l'input a selectionner
+ * @param {array}  array array contient toutes les valeurs de départ des filtres
+ * si la valeur écrite dans l'input existe alors toutes les valeurs contenues dans le filtre correspondant seront affichées
+ * a contrario les autres seront en display none
+ */
+
 function inputFindLink(action, array) {
   action.addEventListener("keyup", (e) => {
     for (let i = 0; i < array.length; i++) {
@@ -213,6 +263,12 @@ function inputFindLink(action, array) {
   });
 }
 
+/**
+ * Fonction checker
+ * @param {array}  arrayTag
+ * @param {array}  valueToCompare
+ * Permets de vérifier toutes les valeurs de l'arrayTag et de récupérer les valeurs des recettes correspondantes
+ */
 function checker(fixedArray, inputArray) {
   let fixedArraylen = fixedArray.length;
   let inputArraylen = inputArray.length;
