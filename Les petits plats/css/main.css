@@ -103,6 +103,20 @@
   filter: invert(100%);
 }
 
+#btnFiltre_2 {
+  width: 20px;
+  right: 5px;
+  background-color: transparent;
+  filter: invert(100%);
+}
+
+#btnFiltre_3 {
+  width: 20px;
+  right: 5px;
+  background-color: transparent;
+  filter: invert(100%);
+}
+
 .filtre input {
   width: 130px;
   font-size: 1.2rem;
