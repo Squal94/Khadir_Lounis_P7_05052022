@@ -19,11 +19,13 @@ const allFiche = document.querySelectorAll(".fiche");
 let arrayTag = [];
 let arrayTemp = [];
 let arrayCompare = [];
+let testArray = [];
 let arrayInputPrincipal = [];
 
 let ingredientColor = "ingredientColor";
 let ustensileColor = "ustensileColor";
 let appareilColor = "appareilColor";
+let inputValue;
 
 /**
  * Factory de création des Tags au click
@@ -69,7 +71,7 @@ function filterTag(target, color) {
 function inputPrincipalFilter() {
   const fichesArray = document.querySelectorAll(".fiche");
   searchInputPrincipal.addEventListener("keyup", (e) => {
-    let inputValue = e.target.value;
+    inputValue = e.target.value.toLowerCase();
     if (inputValue !== "" && inputValue.length > 2) {
       let InputSuggestion = "";
       for (let i = 0; i < fichesArray.length; i++) {
@@ -110,6 +112,8 @@ function inputPrincipalFilter() {
     } else {
       arrayTemp = [];
       arrayInputPrincipal = [];
+      arrayTag = [];
+      console.log(arrayTag);
       document.querySelector(".container__suggestion").innerHTML = "";
       for (let i = 0; i < fichesArray.length; i++) {
         fichesArray[i].style.display = "flex";
@@ -147,6 +151,7 @@ function captureTag(action) {
  */
 
 function arrCompare() {
+  arrayCompare = [];
   for (let i = 0; i < recettes.length; i++) {
     let valueToCompare = [];
     for (let x = 0; x < recettes[i].ingredients.length; x++) {
@@ -295,3 +300,94 @@ ifTagClose();
 inputFindLink(ingredientInput, ingredientAllLink);
 inputFindLink(appareilInput, appareilAllLink);
 inputFindLink(ustensilInput, ustensilAllLink);
+inputPrincipalSearchAdvence();
+
+function inputPrincipalSearchAdvence() {
+  searchInputPrincipal.addEventListener("keyup", (e) => {
+    inputValue = e.target.value.toLowerCase();
+    if (inputValue !== "" && inputValue.length > 2) {
+      for (let i = 0; i < recettes.length; i++) {
+        if (recettes[i].name.toLowerCase() == inputValue) {
+        } else {
+          for (let x = 0; x < recettes[i].ingredients.length; x++) {
+            if (
+              inputValue === recettes[i].ingredients[x].ingredient.toLowerCase()
+            ) {
+              arrayTag = [];
+              arrayInputPrincipal = [];
+              arrayTag.push(inputValue);
+              for (let z = 0; z < recettes[i].ingredients.length; z++) {
+                testArray.push(
+                  recettes[i].ingredients[z].ingredient.toLowerCase()
+                );
+              }
+              for (let z = 0; z < recettes[i].ustensils.length; z++) {
+                testArray.push(recettes[i].ustensils[z].toLowerCase());
+              }
+              testArray.push(recettes[i].appliance.toLowerCase());
+              arrCompare();
+              supprLinkInFiltre(ingredientAllLink, testArray);
+              supprLinkInFiltre(appareilAllLink, testArray);
+              supprLinkInFiltre(ustensilAllLink, testArray);
+            }
+          }
+          for (let x = 0; x < recettes[i].ustensils.length; x++) {
+            if (inputValue == recettes[i].ustensils[x].toLowerCase()) {
+              arrayTag.push(inputValue);
+              for (let z = 0; z < recettes[i].ingredients.length; z++) {
+                testArray.push(
+                  recettes[i].ingredients[z].ingredient.toLowerCase()
+                );
+              }
+              for (let z = 0; z < recettes[i].ustensils.length; z++) {
+                testArray.push(recettes[i].ustensils[z].toLowerCase());
+              }
+              testArray.push(recettes[i].appliance.toLowerCase());
+              arrCompare();
+              supprLinkInFiltre(ingredientAllLink, testArray);
+              supprLinkInFiltre(appareilAllLink, testArray);
+              supprLinkInFiltre(ustensilAllLink, testArray);
+            }
+          }
+          if (inputValue == recettes[i].appliance.toLowerCase()) {
+            arrayTag.push(inputValue);
+            for (let z = 0; z < recettes[i].ingredients.length; z++) {
+              testArray.push(
+                recettes[i].ingredients[z].ingredient.toLowerCase()
+              );
+            }
+            for (let z = 0; z < recettes[i].ustensils.length; z++) {
+              testArray.push(recettes[i].ustensils[z].toLowerCase());
+            }
+            testArray.push(recettes[i].appliance.toLowerCase());
+            arrCompare();
+            supprLinkInFiltre(ingredientAllLink, testArray);
+            supprLinkInFiltre(appareilAllLink, testArray);
+            supprLinkInFiltre(ustensilAllLink, testArray);
+          }
+        }
+      }
+    } else {
+      testArray = [];
+      arrayTag = [];
+      arrayInputPrincipal = [];
+      document.querySelector(".container__suggestion").innerHTML = "";
+    }
+  });
+}
+
+// if (recetteName.toLowerCase() === ficheLabelledby) {
+//   for (let x = 0; x < recettes[i].ingredients.length; x++) {
+//     arrayIngredients.push(recettes[i].ingredients[x].ingredient.toLowerCase());
+//   }
+//   for (let x = 0; x < recettes[i].ustensils.length; x++) {
+//     arrayUstensils.push(recettes[i].ustensils[x].toLowerCase());
+//   }
+//   arrayTemp = [
+//     ...arrayTemp,
+//     ...arrayIngredients,
+//     ...arrayUstensils,
+//     recettes[i].appliance.toLowerCase(),
+//   ];
+// }
+// arrayTemp = [...new Set(arrayTemp)];
