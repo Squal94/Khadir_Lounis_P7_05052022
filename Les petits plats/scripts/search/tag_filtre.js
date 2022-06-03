@@ -169,6 +169,14 @@ function inputPrincipalSearchAdvence() {
 }
 
 function creationAdvenceArray(arrayI) {
+  const fichesArray = document.querySelectorAll(".fiche");
+  for (let i = 0; i < fichesArray.length; i++) {
+    let testFiche = fichesArray[i].getAttribute("aria-labelledby");
+    if (testFiche == arrayI.name) {
+      fichesArray[i].style.display = "flex";
+    }
+  }
+
   for (let z = 0; z < arrayI.ingredients.length; z++) {
     testArray.push(arrayI.ingredients[z].ingredient.toLowerCase());
   }
@@ -350,6 +358,7 @@ filterTag(containerIngredient, ingredientColor);
 filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
 inputPrincipalFilter();
+inputPrincipalSearchAdvence();
 captureTag(containerIngredient);
 captureTag(containerAppareil);
 captureTag(containerUstensil);
@@ -357,4 +366,11 @@ ifTagClose();
 inputFindLink(ingredientInput, ingredientAllLink);
 inputFindLink(appareilInput, appareilAllLink);
 inputFindLink(ustensilInput, ustensilAllLink);
-inputPrincipalSearchAdvence();
+
+// const fichesArray = document.querySelectorAll(".fiche");
+// for (let i = 0; i < fichesArray.length; i++) {
+//   let testFiche = fichesArray[i].getAttribute("aria-labelledby");
+//   if (testFiche == arrayI.name) {
+//     fichesArray[i].style.display = "flex";
+//   }
+// }
