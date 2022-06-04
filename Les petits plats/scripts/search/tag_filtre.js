@@ -17,7 +17,6 @@ const allFiche = document.querySelectorAll(".fiche");
 
 // Déclaration de tous les arrays utilisés
 let arrayTag = [];
-let arrayTemp = [];
 let arrayCompare = [];
 let testArray = [];
 let arrayInputPrincipal = [];
@@ -26,8 +25,6 @@ let ingredientColor = "ingredientColor";
 let ustensileColor = "ustensileColor";
 let appareilColor = "appareilColor";
 let inputValue;
-let messageAlert =
-  "Ces recettes ou ingrédients ne sont pas contenus sur ce site";
 
 /**
  * Factory de création des Tags au click
@@ -95,6 +92,13 @@ function inputPrincipalFilter() {
                 recettes[i].description.toLowerCase().indexOf(inputValue) !== -1
               ) {
                 creationAdvanceArray(recettes[i]);
+              } else {
+                if (arrayInputPrincipal.length == 0) {
+                  document.querySelector(".message").textContent =
+                    "Ces recettes ou ingrédients ne sont pas contenus sur ce site";
+                } else {
+                  document.querySelector(".message").textContent = "";
+                }
               }
             }
           }
@@ -106,6 +110,7 @@ function inputPrincipalFilter() {
       for (let i = 0; i < fichesArray.length; i++) {
         fichesArray[i].style.display = "flex";
       }
+      document.querySelector(".message").textContent = "";
       supprLinkInFiltre(ingredientAllLink, testArray);
       supprLinkInFiltre(appareilAllLink, testArray);
       supprLinkInFiltre(ustensilAllLink, testArray);
