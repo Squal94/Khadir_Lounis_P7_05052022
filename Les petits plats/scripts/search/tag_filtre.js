@@ -239,7 +239,7 @@ function supprLinkInFiltre(array, arrayCompare) {
  */
 
 function ifTagClose() {
-  tagContainer.addEventListener("mousedown", (e) => {
+  tagContainer.addEventListener("mouseup", (e) => {
     let cible = e.target;
     let cibleClose = cible.getAttribute("class");
     if (cibleClose == "btn-close") {
