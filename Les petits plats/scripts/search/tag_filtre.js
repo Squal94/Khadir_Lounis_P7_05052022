@@ -18,13 +18,14 @@ const allFiche = document.querySelectorAll(".fiche");
 
 // Déclaration de tous les arrays utilisés
 let arrayTag = [];
-let arrayTemp = [];
 let arrayCompare = [];
+let testArray = [];
 let arrayInputPrincipal = [];
 
 let ingredientColor = "ingredientColor";
 let ustensileColor = "ustensileColor";
 let appareilColor = "appareilColor";
+let inputValue;
 
 /**
  * Factory de création des Tags au click d'un element dans les filtres
@@ -70,49 +71,75 @@ function filterTag(target, color) {
 function inputPrincipalFilter() {
   const fichesArray = document.querySelectorAll(".fiche");
   searchInputPrincipal.addEventListener("keyup", (e) => {
-    let inputValue = e.target.value;
+    arrayInputPrincipal = [];
+    testArray = [];
+    inputValue = e.target.value.toLowerCase();
     if (inputValue !== "" && inputValue.length > 2) {
       let InputSuggestion = "";
-      fichesArray.forEach((fiche) => {
-        let ficheLabelledby = fiche
-          .getAttribute("aria-labelledby")
-          .toLowerCase();
-        if (ficheLabelledby.includes(`${inputValue.toLowerCase()}`)) {
-          InputSuggestion += `<p class="suggestion">${ficheLabelledby}</p> `;
-          document.querySelector(".container__suggestion").innerHTML =
-            InputSuggestion;
-          recettes.forEach((recette) => {
-            let recetteName = recette.name;
-            if (recetteName.toLowerCase() === ficheLabelledby) {
-              let ingredients = [...recette.ingredients];
-              ingredients.forEach((name) => {
-                arrayTemp.push(name.ingredient.toLowerCase());
-              });
-              recette.ustensils.forEach((ustensil) => {
-                arrayTemp.push(ustensil.toLowerCase());
-              });
-              arrayTemp.push(recette.appliance.toLowerCase());
-            }
-            arrayTemp = [...new Set(arrayTemp)];
-          });
-
-          arrayInputPrincipal.push(fiche);
-          //arrayCompare.push(ficheLabelledby);
+      for (let i = 0; i < recettes.length; i++) {
+        let nomRecette = recettes[i].name.toLowerCase();
+        if (nomRecette.indexOf(inputValue) !== -1) {
+          creationAdvanceArray(recettes[i]);
         } else {
-          fiche.style.display = "none";
+          for (let x = 0; x < recettes[i].ingredients.length; x++) {
+            if (
+              recettes[i].ingredients[x].ingredient
+                .toLowerCase()
+                .indexOf(inputValue) !== -1
+            ) {
+              creationAdvanceArray(recettes[i]);
+            } else {
+              if (
+                recettes[i].description.toLowerCase().indexOf(inputValue) !== -1
+              ) {
+                creationAdvanceArray(recettes[i]);
+              } else {
+                if (arrayInputPrincipal.length == 0) {
+                  document.querySelector(".message").textContent =
+                    "Ces recettes ou ingrédients ne sont pas contenus sur ce site";
+                } else {
+                  document.querySelector(".message").textContent = "";
+                }
+              }
+            }
+          }
         }
-      });
+      }
     } else {
-      document.querySelector(".container__suggestion").innerHTML = "";
-      arrayTemp = [];
-      fichesArray.forEach((fiche) => {
-        fiche.style.display = "flex";
-      });
+      arrayInputPrincipal = [];
+      testArray = [];
+      for (let i = 0; i < fichesArray.length; i++) {
+        fichesArray[i].style.display = "flex";
+      }
+      document.querySelector(".message").textContent = "";
+      supprLinkInFiltre(ingredientAllLink, testArray);
+      supprLinkInFiltre(appareilAllLink, testArray);
+      supprLinkInFiltre(ustensilAllLink, testArray);
     }
-    supprLinkInFiltre(ingredientAllLink, arrayTemp);
-    supprLinkInFiltre(appareilAllLink, arrayTemp);
-    supprLinkInFiltre(ustensilAllLink, arrayTemp);
   });
+}
+
+function creationAdvanceArray(arrayI) {
+  const fichesArray = document.querySelectorAll(".fiche");
+  for (let i = 0; i < fichesArray.length; i++) {
+    let testFiche = fichesArray[i].getAttribute("aria-labelledby");
+    if (testFiche === arrayI.name) {
+      arrayInputPrincipal.push(fichesArray[i]);
+    } else {
+      fichesArray[i].style.display = "none";
+    }
+  }
+  for (let z = 0; z < arrayI.ingredients.length; z++) {
+    testArray.push(arrayI.ingredients[z].ingredient.toLowerCase());
+  }
+  for (let z = 0; z < arrayI.ustensils.length; z++) {
+    testArray.push(arrayI.ustensils[z].toLowerCase());
+  }
+  testArray.push(arrayI.appliance.toLowerCase());
+  arrCompare();
+  supprLinkInFiltre(ingredientAllLink, testArray);
+  supprLinkInFiltre(appareilAllLink, testArray);
+  supprLinkInFiltre(ustensilAllLink, testArray);
 }
 
 /**
@@ -121,8 +148,8 @@ function inputPrincipalFilter() {
  * si l'element cliqué contient la class link alors la valeur est push dans arrayTag
  */
 function captureTag(action) {
+  arrayCompare = [];
   action.addEventListener("click", (e) => {
-    arrayCompare = [];
     if (e.target.getAttribute("class").includes("link") === true) {
       arrayTag.push(e.target.textContent);
       arrCompare();
