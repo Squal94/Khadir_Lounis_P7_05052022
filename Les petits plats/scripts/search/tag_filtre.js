@@ -76,23 +76,17 @@ function inputPrincipalFilter() {
     inputValue = e.target.value.toLowerCase();
     if (inputValue !== "" && inputValue.length > 2) {
       let InputSuggestion = "";
-      for (let i = 0; i < recettes.length; i++) {
-        let nomRecette = recettes[i].name.toLowerCase();
-        if (nomRecette.indexOf(inputValue) !== -1) {
-          creationAdvanceArray(recettes[i]);
+      recettes.forEach((recette) => {
+        let nomRecette = recette.name.toLowerCase();
+        if (nomRecette.includes(inputValue)) {
+          creationAdvanceArray(recette);
         } else {
-          for (let x = 0; x < recettes[i].ingredients.length; x++) {
-            if (
-              recettes[i].ingredients[x].ingredient
-                .toLowerCase()
-                .indexOf(inputValue) !== -1
-            ) {
-              creationAdvanceArray(recettes[i]);
+          recette.ingredients.filter((v) => {
+            if (v.ingredient.toLowerCase().includes(inputValue)) {
+              creationAdvanceArray(recette);
             } else {
-              if (
-                recettes[i].description.toLowerCase().indexOf(inputValue) !== -1
-              ) {
-                creationAdvanceArray(recettes[i]);
+              if (recette.description.toLowerCase().includes(inputValue)) {
+                creationAdvanceArray(recette);
               } else {
                 if (arrayInputPrincipal.length == 0) {
                   document.querySelector(".message").textContent =
@@ -102,9 +96,9 @@ function inputPrincipalFilter() {
                 }
               }
             }
-          }
+          });
         }
-      }
+      });
     } else {
       arrayInputPrincipal = [];
       testArray = [];
@@ -136,6 +130,7 @@ function creationAdvanceArray(arrayI) {
     testArray.push(arrayI.ustensils[z].toLowerCase());
   }
   testArray.push(arrayI.appliance.toLowerCase());
+  testArray = [...new Set(testArray)];
   arrCompare();
   supprLinkInFiltre(ingredientAllLink, testArray);
   supprLinkInFiltre(appareilAllLink, testArray);
@@ -148,8 +143,8 @@ function creationAdvanceArray(arrayI) {
  * si l'element cliqué contient la class link alors la valeur est push dans arrayTag
  */
 function captureTag(action) {
-  arrayCompare = [];
   action.addEventListener("click", (e) => {
+    arrayCompare = [];
     if (e.target.getAttribute("class").includes("link") === true) {
       arrayTag.push(e.target.textContent);
       arrCompare();
@@ -224,7 +219,7 @@ function supprLinkInFiltre(array, arrayCompare) {
   if (arrayCompare.length > 1) {
     array.forEach((item) => {
       let ciblelabelledby = item.textContent;
-      if (arrayCompare.indexOf(`${ciblelabelledby}`) !== -1) {
+      if (arrayCompare.indexOf(ciblelabelledby) !== -1) {
         item.style.display = "flex";
       } else {
         item.style.display = "none";
@@ -249,10 +244,8 @@ function ifTagClose() {
     let cibleClose = cible.getAttribute("class");
     if (cibleClose == "btn-close") {
       let ciblelabelledby = cible.getAttribute("aria-labelledby");
-      console.log(ciblelabelledby);
       let index = arrayTag.indexOf(ciblelabelledby);
       arrayTag.splice(index, 1);
-      console.log(arrayTag);
     }
     arrCompare();
   });
