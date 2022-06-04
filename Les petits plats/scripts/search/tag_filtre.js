@@ -55,7 +55,7 @@ function filterTag(target, color) {
        </div>`;
       tagContainer.appendChild(tagDiv);
       tagDiv.innerHTML = tagAffichage;
-      arrayTag.push(text);
+      //arrayTag.push(text);
     },
     false
   );
@@ -73,110 +73,56 @@ function filterTag(target, color) {
 function inputPrincipalFilter() {
   const fichesArray = document.querySelectorAll(".fiche");
   searchInputPrincipal.addEventListener("keyup", (e) => {
+    arrayInputPrincipal = [];
+    testArray = [];
     inputValue = e.target.value.toLowerCase();
     if (inputValue !== "" && inputValue.length > 2) {
       let InputSuggestion = "";
-      for (let i = 0; i < fichesArray.length; i++) {
-        let ficheLabelledby = fichesArray[i]
-          .getAttribute("aria-labelledby")
-          .toLowerCase();
-        if (ficheLabelledby.indexOf(inputValue.toLowerCase()) !== -1) {
-          InputSuggestion += `<p class="suggestion">${ficheLabelledby}</p> `;
-          document.querySelector(".container__suggestion").innerHTML =
-            InputSuggestion;
-          for (let i = 0; i < recettes.length; i++) {
-            let recetteName = recettes[i].name;
-            let arrayIngredients = [];
-            let arrayUstensils = [];
-            if (recetteName.toLowerCase() === ficheLabelledby) {
-              for (let x = 0; x < recettes[i].ingredients.length; x++) {
-                arrayIngredients.push(
-                  recettes[i].ingredients[x].ingredient.toLowerCase()
-                );
-              }
-              for (let x = 0; x < recettes[i].ustensils.length; x++) {
-                arrayUstensils.push(recettes[i].ustensils[x].toLowerCase());
-              }
-              arrayTemp = [
-                ...arrayTemp,
-                ...arrayIngredients,
-                ...arrayUstensils,
-                recettes[i].appliance.toLowerCase(),
-              ];
-            }
-            arrayTemp = [...new Set(arrayTemp)];
-          }
-          arrayInputPrincipal.push(fichesArray[i]);
+      for (let i = 0; i < recettes.length; i++) {
+        let nomRecette = recettes[i].name.toLowerCase();
+        if (nomRecette.indexOf(inputValue) !== -1) {
+          creationAdvanceArray(recettes[i]);
         } else {
-          fichesArray[i].style.display = "none";
+          for (let x = 0; x < recettes[i].ingredients.length; x++) {
+            if (
+              recettes[i].ingredients[x].ingredient
+                .toLowerCase()
+                .indexOf(inputValue) !== -1
+            ) {
+              creationAdvanceArray(recettes[i]);
+            } else {
+              if (
+                recettes[i].description.toLowerCase().indexOf(inputValue) !== -1
+              ) {
+                creationAdvanceArray(recettes[i]);
+              }
+            }
+          }
         }
       }
     } else {
-      arrayTemp = [];
       arrayInputPrincipal = [];
-      arrayTag = [];
+      testArray = [];
       for (let i = 0; i < fichesArray.length; i++) {
         fichesArray[i].style.display = "flex";
       }
-    }
-    supprLinkInFiltre(ingredientAllLink, arrayTemp);
-    supprLinkInFiltre(appareilAllLink, arrayTemp);
-    supprLinkInFiltre(ustensilAllLink, arrayTemp);
-  });
-}
-
-function inputPrincipalSearchAdvence() {
-  searchInputPrincipal.addEventListener("keyup", (e) => {
-    inputValue = e.target.value.toLowerCase();
-    if (inputValue !== "" && inputValue.length > 2) {
-      for (let i = 0; i < recettes.length; i++) {
-        if (recettes[i].name.toLowerCase().indexOf(inputValue) !== -1) {
-        } else {
-          for (let x = 0; x < recettes[i].ingredients.length; x++) {
-            // console.log(
-            //   recettes[i].ingredients[x].ingredient
-            //     .toLowerCase()
-            //     .indexOf(inputValue)
-            //);
-            if (
-              inputValue == recettes[i].ingredients[x].ingredient.toLowerCase()
-            ) {
-              arrayTag.push(
-                recettes[i].ingredients[x].ingredient.toLowerCase()
-              );
-              creationAdvenceArray(recettes[i]);
-            }
-          }
-          for (let x = 0; x < recettes[i].ustensils.length; x++) {
-            if (inputValue == recettes[i].ustensils[x].toLowerCase()) {
-              arrayTag.push(recettes[i].ustensils[x].toLowerCase());
-              creationAdvenceArray(recettes[i]);
-            }
-          }
-          if (inputValue == recettes[i].appliance.toLowerCase()) {
-            arrayTag.push(recettes[i].appliance.toLowerCase());
-            creationAdvenceArray(recettes[i]);
-          }
-        }
-      }
-    } else {
-      testArray = [];
-      arrayTag = [];
-      arrayInputPrincipal = [];
-      document.querySelector(".container__suggestion").innerHTML = "";
+      supprLinkInFiltre(ingredientAllLink, testArray);
+      supprLinkInFiltre(appareilAllLink, testArray);
+      supprLinkInFiltre(ustensilAllLink, testArray);
     }
   });
 }
 
-function creationAdvenceArray(arrayI) {
+function creationAdvanceArray(arrayI) {
   const fichesArray = document.querySelectorAll(".fiche");
   for (let i = 0; i < fichesArray.length; i++) {
     let testFiche = fichesArray[i].getAttribute("aria-labelledby");
-    if (testFiche == arrayI.name) {
-      fichesArray[i].style.display = "flex";
+    if (testFiche === arrayI.name) {
+      arrayInputPrincipal.push(fichesArray[i]);
+    } else {
+      fichesArray[i].style.display = "none";
     }
   }
-
   for (let z = 0; z < arrayI.ingredients.length; z++) {
     testArray.push(arrayI.ingredients[z].ingredient.toLowerCase());
   }
@@ -189,6 +135,7 @@ function creationAdvenceArray(arrayI) {
   supprLinkInFiltre(appareilAllLink, testArray);
   supprLinkInFiltre(ustensilAllLink, testArray);
 }
+
 /**
  * Fonction de récupération de la valeur du tag sélectionné
  * @param {action}  action de récupération au click selon le container du filtre sélectionné
@@ -196,8 +143,8 @@ function creationAdvenceArray(arrayI) {
  */
 
 function captureTag(action) {
+  arrayCompare = [];
   action.addEventListener("click", (e) => {
-    arrayCompare = [];
     let tempBalise = e.target.getAttribute("class");
     if (tempBalise === "link") {
       arrayTag.push(e.target.textContent);
@@ -216,8 +163,8 @@ function captureTag(action) {
 
 function arrCompare() {
   arrayCompare = [];
-  arrayTag = [...new Set(arrayTag)];
-  console.log(arrayTag);
+  //arrayTag = [...new Set(arrayTag)];
+
   for (let i = 0; i < recettes.length; i++) {
     let valueToCompare = [];
     for (let x = 0; x < recettes[i].ingredients.length; x++) {
@@ -358,7 +305,6 @@ filterTag(containerIngredient, ingredientColor);
 filterTag(containerAppareil, appareilColor);
 filterTag(containerUstensil, ustensileColor);
 inputPrincipalFilter();
-inputPrincipalSearchAdvence();
 captureTag(containerIngredient);
 captureTag(containerAppareil);
 captureTag(containerUstensil);
@@ -374,3 +320,37 @@ inputFindLink(ustensilInput, ustensilAllLink);
 //     fichesArray[i].style.display = "flex";
 //   }
 // }
+
+// for (let i = 0; i < recettes.length; i++) {
+//   for (let x = 0; x < recettes[i].ingredients.length; x++) {
+//     testArray.push(recettes[i].ingredients[x].ingredient.toLowerCase());
+//   }
+// }
+// testArray = [...new Set(testArray)];
+// console.log(testArray);
+
+// InputSuggestion += `<p class="suggestion">${ficheLabelledby}</p> `;
+// document.querySelector(".container__suggestion").innerHTML = InputSuggestion;
+// for (let i = 0; i < recettes.length; i++) {
+//   let recetteName = recettes[i].name;
+//   let arrayIngredients = [];
+//   let arrayUstensils = [];
+//   if (recetteName.toLowerCase() === ficheLabelledby) {
+//     for (let x = 0; x < recettes[i].ingredients.length; x++) {
+//       arrayIngredients.push(
+//         recettes[i].ingredients[x].ingredient.toLowerCase()
+//       );
+//     }
+//     for (let x = 0; x < recettes[i].ustensils.length; x++) {
+//       arrayUstensils.push(recettes[i].ustensils[x].toLowerCase());
+//     }
+//     arrayTemp = [
+//       ...arrayTemp,
+//       ...arrayIngredients,
+//       ...arrayUstensils,
+//       recettes[i].appliance.toLowerCase(),
+//     ];
+//   }
+//   arrayTemp = [...new Set(arrayTemp)];
+// }
+// arrayInputPrincipal.push(fichesArray[i]);
